@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4382874417479449841}
   - component: {fileID: 6994413979444442375}
-  - component: {fileID: 6422380120377825811}
+  - component: {fileID: -4375683926907213877}
   m_Layer: 0
   m_Name: InteractableNPC
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4382874417479449855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.689722, y: 2.1344025, z: 1.8511822}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,7 +47,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6422380120377825811
+--- !u!114 &-4375683926907213877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,9 +56,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4382874417479449855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93016856c26be264a97b31eff796de4d, type: 3}
+  m_Script: {fileID: 11500000, guid: eb1c0a3fa2ba30e469b4f2321cb8f6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionType: 2
   inRange: 0
   interactAction:
     m_PersistentCalls:

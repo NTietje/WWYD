@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 545783336157716435}
   - component: {fileID: 3019372098703264513}
-  - component: {fileID: 3781878108901315521}
+  - component: {fileID: 4798044992982129561}
   m_Layer: 0
   m_Name: InteractableItem
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3408766286636968739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.188011, y: 2.172311, z: 1.9709532}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,12 +41,12 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3408766286636968739}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3781878108901315521
+--- !u!114 &4798044992982129561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,9 +55,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3408766286636968739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd54f928b3f56c4aa58708c286d8054, type: 3}
+  m_Script: {fileID: 11500000, guid: eb1c0a3fa2ba30e469b4f2321cb8f6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionType: 0
   inRange: 0
   interactAction:
     m_PersistentCalls:
