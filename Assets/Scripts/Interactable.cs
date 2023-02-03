@@ -12,12 +12,14 @@ public enum InteractionType
 public class Interactable : MonoBehaviour
 {
     [Header("Interactable Settings")]
+    
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private DialogueType dialogueType;
     [Header("Start Events after Interaction")]
     [SerializeField] private UnityEvent interactAction;
     [SerializeField] private bool startEventAfterDialogue = false;
     [SerializeField] private float eventDelay;
+    [SerializeField] private DialogueManager dialogueManager;
 
     private bool _inRange;
     private bool allowEventAfterDialogue;
@@ -31,10 +33,11 @@ public class Interactable : MonoBehaviour
             if (Input.GetKeyDown(_interactKey))
             {
                 Debug.Log("Interaction was called");
-                if (interactionType == InteractionType.StartDialogue & !DialogueManager.Instance.getIsDialogueActive())
+                if (interactionType == InteractionType.StartDialogue)
                 {
-                    DialogueManager.Instance.setDialogueType(dialogueType);
-                    DialogueManager.Instance.StartNewDialogue();
+                    Debug.Log("will start dialog");
+                    dialogueManager.setDialogueType(dialogueType);
+                    dialogueManager.StartNewDialogue();
                     if (startEventAfterDialogue)
                     {
                         allowEventAfterDialogue = true; 
@@ -47,10 +50,8 @@ public class Interactable : MonoBehaviour
             }
         }
         if (interactAction != null & startEventAfterDialogue &
-            !DialogueManager.Instance.getIsDialogueActive() & allowEventAfterDialogue)
+            dialogueManager.getIsDialogueActive() & allowEventAfterDialogue)
         {
-            Debug.Log("invoke event");
-            Debug.Log("right before invoke");
             allowEventAfterDialogue = false;
             StartCoroutine(ShowEvent());
         }
@@ -59,7 +60,6 @@ public class Interactable : MonoBehaviour
     private IEnumerator ShowEvent()
     {
         yield return new WaitForSeconds(eventDelay);
-        Debug.Log("invoke event");
         interactAction.Invoke(); 
     }
 
@@ -69,6 +69,7 @@ public class Interactable : MonoBehaviour
         {
             Debug.Log("Player is in range");
             _inRange = true;
+            dialogueManager.ShowInteractPanel();
         }
     }
 
@@ -76,8 +77,9 @@ public class Interactable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player is not anymore in range");
+            Debug.Log("Player is out of range");
             _inRange = false;
+            dialogueManager.HideInteractPanel();
         }
     }
 }

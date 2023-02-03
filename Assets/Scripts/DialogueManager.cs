@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject choicesPanel;
     [Header("Dialogue Settings")]
     [SerializeField] float typingDelay;
+    [Header("Interact Press UI")]
+    [SerializeField] private GameObject interactPanel;
     
     public static DialogueManager Instance { get; private set; }
     
@@ -50,6 +52,7 @@ public class DialogueManager : MonoBehaviour
         _dialogueIsActive = false;
         _dialogueFinished = false;
         dialoguePanel.SetActive(false);
+        interactPanel.SetActive(false);
     }
     
     void Update()
@@ -62,6 +65,16 @@ public class DialogueManager : MonoBehaviour
                 ContinueDialogue();
             }
         }
+    }
+
+    public void ShowInteractPanel()
+    {
+        interactPanel.SetActive(true);
+    }
+    
+    public void HideInteractPanel()
+    {
+        interactPanel.SetActive(false);
     }
     
     public DialogueType getDialogueType()
@@ -85,6 +98,7 @@ public class DialogueManager : MonoBehaviour
         _dialogues = DialogueParser.GetDialoguesForType(_dialogueType);
         _dialogueIsActive = true;
         _dialogueFinished = false;
+        interactPanel.SetActive(false);
         dialoguePanel.SetActive(true);
         
         ContinueDialogue();

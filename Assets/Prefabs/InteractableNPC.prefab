@@ -59,9 +59,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1c0a3fa2ba30e469b4f2321cb8f6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 2
-  inRange: 0
+  interactionType: 1
+  dialogueType: 0
   interactAction:
     m_PersistentCalls:
       m_Calls: []
-  interactKey: 101
+  startEventAfterDialogue: 0
+  eventDelay: 0
