@@ -1,100 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Ink.Runtime;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-
-public enum DialogueType
-{
-    WastelandCan,
-    WastelandDoll,
-    WastelandPicture,
-    WastelandSphere,
-    CityIntro,
-    CityChoices,
-    CityPeopleDialogue,
-    RiverIntro,
-    ControlRoomIntro,
-    ControlRoomChoices,
-    ControlRoom,
-    ReactorIntro,
-    Powerhouse,
-    HouseChoicesOne,
-    HouseChoicesTwo
-}
-
-public enum Choice
-{
-    People,
-    Chill,
-    Investigate
-}
-
-public class Dialogue
-{
-    public string speaker { get; set; }
-    public string text { get; set; }
-    public string subtext { get; set; }
-    public List<Choice> choices { get; set; }
-
-    public Dialogue(string speaker, string text, string subtext = null, List<Choice> choices = null)
-    {
-        this.speaker = speaker;
-        this.text = text;
-        this.subtext = subtext;
-        this.choices = choices;
-    }
-}
-
-public static class DialogueParser {
-
-    public static List<Dialogue> GetDialoguesForType(DialogueType type)
-    {
-        List<Dialogue> dialogues = new List<Dialogue>();
-        switch (type)
-        {
-            case DialogueType.WastelandCan:
-                dialogues.Add(new Dialogue("Ich", "bla bla bla", "*singt*"));
-                dialogues.Add(new Dialogue("Ich", "nasfjbf sajfbghas jdfh asuihgas"));
-                return dialogues;
-            case DialogueType.WastelandDoll:
-                break;
-            case DialogueType.WastelandPicture:
-                break;
-            case DialogueType.WastelandSphere:
-                break;
-            case DialogueType.CityIntro:
-                break;
-            case DialogueType.CityChoices:
-                break;
-            case DialogueType.CityPeopleDialogue:
-                break;
-            case DialogueType.RiverIntro:
-                break;
-            case DialogueType.ControlRoomIntro:
-                break;
-            case DialogueType.ControlRoomChoices:
-                break;
-            case DialogueType.ControlRoom:
-                break;
-            case DialogueType.ReactorIntro:
-                break;
-            case DialogueType.Powerhouse:
-                break;
-            case DialogueType.HouseChoicesOne:
-                break;
-            case DialogueType.HouseChoicesTwo:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
-        }
-
-        return dialogues;
-    }
-}
 
 public class DialogueManager : MonoBehaviour
 {
@@ -103,45 +11,80 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Text dialogueText;
     [SerializeField] private Text dialogueSubtext;
     [SerializeField] private Text dialogueSpeaker;
+    [Header("Choices UI")]
     [SerializeField] private GameObject choicesPanel;
-    [SerializeField] float typingDelay = 0f;
-
-    public DialogueType dialogueType;
+    [Header("Dialogue Settings")]
+    [SerializeField] float typingDelay;
+    
+    public static DialogueManager Instance { get; private set; }
+    
+    
+    private readonly KeyCode _continueKey = KeyCode.Return;
+    private DialogueType _dialogueType;
+    // for ink use
     // public TextAsset inkJson;
-    private List<Dialogue> dialogues;
     // private Story gameStory;
-    private bool dialogueIsTyping;
-    public static DialogueManager instance { get; private set; }
-    private bool dialogueIsPlaying;
-    private int dialogueIndex = 0;
+    private List<Dialogue> _dialogues;
+    private bool _dialogueIsTyping;
+    private bool _dialogueFinished;
+    private bool _dialogueIsActive;
+    private int _dialogueIndex;
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogWarning("Found more than one DialogueManager");
         }
         else
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         // gameStory = new Story(inkJson.text);
-        dialogueIsTyping = false;
-        dialogueIsPlaying = false;
+        _dialogueIsTyping = false;
+        _dialogueIsActive = false;
+        _dialogueFinished = false;
         dialoguePanel.SetActive(false);
+    }
+    
+    void Update()
+    {
+        if (Input.GetKeyDown(_continueKey) & _dialogueIsActive & !_dialogueIsTyping)
+        {
+            if (!_dialogueFinished)
+            {
+                Debug.Log("CONTINUE dialogue");
+                ContinueDialogue();
+            }
+        }
+    }
+    
+    public DialogueType getDialogueType()
+    {
+        return _dialogueType;
+    }
+
+    public bool getIsDialogueActive()
+    {
+        return _dialogueIsActive;
+    }
+
+    public void setDialogueType(DialogueType type)
+    {
+        _dialogueType = type;
     }
     
     public void StartNewDialogue()
     {
-        dialogueIndex = 0;
-        dialogues = DialogueParser.GetDialoguesForType(dialogueType);
-        dialogueIsPlaying = true;
+        _dialogueIndex = 0;
+        _dialogues = DialogueParser.GetDialoguesForType(_dialogueType);
+        _dialogueIsActive = true;
+        _dialogueFinished = false;
         dialoguePanel.SetActive(true);
         
         ContinueDialogue();
@@ -157,24 +100,24 @@ public class DialogueManager : MonoBehaviour
         // dialogueText.text = "";
         dialogueSubtext.text = "";
         
-        if (dialogues.Count > 0 & dialogueIndex < dialogues.Count & !dialogueIsTyping)
+        if (_dialogues.Count > 0 & _dialogueIndex < _dialogues.Count & !_dialogueIsTyping)
         {
-            dialogueSpeaker.text = dialogues[dialogueIndex].speaker;
+            dialogueSpeaker.text = _dialogues[_dialogueIndex].Speaker;
             // dialogueText.text = dialogues[dialogueIndex].text;
-            StartCoroutine(DisplayLine(dialogues[dialogueIndex].text));
+            StartCoroutine(DisplayLine(_dialogues[_dialogueIndex].Text));
             dialogueText.gameObject.SetActive(true);
             
-            if (dialogues[dialogueIndex].subtext != null)
+            if (_dialogues[_dialogueIndex].Subtext != null)
             {
                 dialogueSubtext.gameObject.SetActive(true);
-                dialogueSubtext.text = dialogues[dialogueIndex].subtext;
+                dialogueSubtext.text = _dialogues[_dialogueIndex].Subtext;
             }
             else
             {
                 dialogueSubtext.gameObject.SetActive(false);
             }
             
-            if (dialogues[dialogueIndex].choices != null)
+            if (_dialogues[_dialogueIndex].Choices != null)
             {
                 choicesPanel.SetActive(true);
                 // set choices
@@ -184,32 +127,33 @@ public class DialogueManager : MonoBehaviour
                 choicesPanel.SetActive(false);
             }
             
-            dialogueIndex++;
+            _dialogueIndex++;
             // if (dialogueIndex == dialogues.Count)
             // {
             //     
             // }
         }
+        else
+        {
+            CloseDialogue();
+        }
 
-    }
-
-    private void EndDialogueReached()
-    {
-        
     }
 
     private void CloseDialogue()
     {
-        dialogues = null;
+        Debug.Log("CLOSE dialogue");
+        _dialogueFinished = true;
+        _dialogues = null;
         dialogueText.gameObject.SetActive(false);
         dialogueSubtext.gameObject.SetActive(false);
-        dialogueIsPlaying = false;
+        _dialogueIsActive = false;
         dialoguePanel.SetActive(false);
     }
 
     private IEnumerator DisplayLine(string line)
     {
-        dialogueIsTyping = true;
+        _dialogueIsTyping = true;
         dialogueText.text = "";
 
         foreach (char c in line)
@@ -217,6 +161,6 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += c;
             yield return new WaitForSeconds(typingDelay);
         }
-        dialogueIsTyping = false;
+        _dialogueIsTyping = false;
     }
 }

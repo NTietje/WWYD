@@ -1,35 +1,66 @@
-
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public enum InteractionType
 {
-    Interact,
-    PickUp,
-    Talk
+    OnlyInteract,
+    StartDialogue
 }
 
 public class Interactable : MonoBehaviour
 {
-    public InteractionType interactionType;
-    public bool inRange;
-    public UnityEvent interactAction;
-    public KeyCode interactKey = KeyCode.E;
-    public DialogueType dialogueType;
+    [Header("Interactable Settings")]
+    [SerializeField] private InteractionType interactionType;
+    [SerializeField] private DialogueType dialogueType;
+    [Header("Start Events after Interaction")]
+    [SerializeField] private UnityEvent interactAction;
+    [SerializeField] private bool startEventAfterDialogue = false;
+    [SerializeField] private float eventDelay;
+
+    private bool _inRange;
+    private bool allowEventAfterDialogue;
+    private KeyCode _interactKey = KeyCode.E;
 
     // Update is called once per frame
     void Update()
     {
-        if (inRange)
+        if (_inRange)
         {
-            if (Input.GetKeyDown(interactKey))
+            if (Input.GetKeyDown(_interactKey))
             {
-                DialogueManager.instance.dialogueType = dialogueType;
                 Debug.Log("Interaction was called");
-                interactAction.Invoke();
+                if (interactionType == InteractionType.StartDialogue & !DialogueManager.Instance.getIsDialogueActive())
+                {
+                    DialogueManager.Instance.setDialogueType(dialogueType);
+                    DialogueManager.Instance.StartNewDialogue();
+                    if (startEventAfterDialogue)
+                    {
+                        allowEventAfterDialogue = true; 
+                    }
+                }
+                if (!startEventAfterDialogue & interactAction != null)
+                {
+                    StartCoroutine(ShowEvent());
+                }
             }
         }
+        if (interactAction != null & startEventAfterDialogue &
+            !DialogueManager.Instance.getIsDialogueActive() & allowEventAfterDialogue)
+        {
+            Debug.Log("invoke event");
+            Debug.Log("right before invoke");
+            allowEventAfterDialogue = false;
+            StartCoroutine(ShowEvent());
+        }
+    }
+
+    private IEnumerator ShowEvent()
+    {
+        yield return new WaitForSeconds(eventDelay);
+        Debug.Log("invoke event");
+        interactAction.Invoke(); 
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -37,7 +68,7 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player is in range");
-            inRange = true;
+            _inRange = true;
         }
     }
 
@@ -46,7 +77,7 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player is not anymore in range");
-            inRange = false;
+            _inRange = false;
         }
     }
 }
