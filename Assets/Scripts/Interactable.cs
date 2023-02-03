@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,7 +16,8 @@ public class Interactable : MonoBehaviour
     public bool inRange;
     public UnityEvent interactAction;
     public KeyCode interactKey = KeyCode.E;
-    
+    public DialogueType dialogueType;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +25,7 @@ public class Interactable : MonoBehaviour
         {
             if (Input.GetKeyDown(interactKey))
             {
+                DialogueManager.instance.dialogueType = dialogueType;
                 Debug.Log("Interaction was called");
                 interactAction.Invoke();
             }
