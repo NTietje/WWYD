@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     [Header("Dialogue UI")]
+    [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private Text dialogueText;
     [SerializeField] private Text dialogueSubtext;
@@ -19,7 +20,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject interactPanel;
     
     public static DialogueManager Instance { get; private set; }
-    
     
     private readonly KeyCode _continueKey = KeyCode.Return;
     private DialogueType _dialogueType;
@@ -48,6 +48,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         // gameStory = new Story(inkJson.text);
+        canvas.gameObject.SetActive(true);
         _dialogueIsTyping = false;
         _dialogueIsActive = false;
         _dialogueFinished = false;
@@ -69,11 +70,14 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowInteractPanel()
     {
+        Debug.Log("Show interact panel");
+        canvas.gameObject.SetActive(true);
         interactPanel.SetActive(true);
     }
     
     public void HideInteractPanel()
     {
+        Debug.Log("Hide interact panel");
         interactPanel.SetActive(false);
     }
     
@@ -90,16 +94,20 @@ public class DialogueManager : MonoBehaviour
     public void setDialogueType(DialogueType type)
     {
         _dialogueType = type;
+        Debug.Log("Set dialogue type to: " + type);
     }
     
     public void StartNewDialogue()
     {
+        Debug.Log("Start new dialogue");
+        canvas.gameObject.SetActive(true);
         _dialogueIndex = 0;
         _dialogues = DialogueParser.GetDialoguesForType(_dialogueType);
         _dialogueIsActive = true;
         _dialogueFinished = false;
-        interactPanel.SetActive(false);
         dialoguePanel.SetActive(true);
+        
+        interactPanel.SetActive(false);
         
         ContinueDialogue();
         
@@ -111,11 +119,16 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
-        // dialogueText.text = "";
+        Debug.Log("Try continue dialogue");
+        dialogueText.text = "";
         dialogueSubtext.text = "";
-        
+
+        Debug.Log("dialogues count: " + _dialogues.Count);
+        Debug.Log("dialogues index: " + _dialogueIndex);
+        Debug.Log("dialogue is NOT typing: " + !_dialogueIsTyping);
         if (_dialogues.Count > 0 & _dialogueIndex < _dialogues.Count & !_dialogueIsTyping)
         {
+            Debug.Log("continue dialogue");
             dialogueSpeaker.text = _dialogues[_dialogueIndex].Speaker;
             // dialogueText.text = dialogues[dialogueIndex].text;
             StartCoroutine(DisplayLine(_dialogues[_dialogueIndex].Text));
@@ -123,14 +136,9 @@ public class DialogueManager : MonoBehaviour
             
             if (_dialogues[_dialogueIndex].Subtext != null)
             {
-                dialogueSubtext.gameObject.SetActive(true);
                 dialogueSubtext.text = _dialogues[_dialogueIndex].Subtext;
             }
-            else
-            {
-                dialogueSubtext.gameObject.SetActive(false);
-            }
-            
+
             if (_dialogues[_dialogueIndex].Choices != null)
             {
                 choicesPanel.SetActive(true);
@@ -142,10 +150,6 @@ public class DialogueManager : MonoBehaviour
             }
             
             _dialogueIndex++;
-            // if (dialogueIndex == dialogues.Count)
-            // {
-            //     
-            // }
         }
         else
         {

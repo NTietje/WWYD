@@ -285,7 +285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7, y: 164}
+  m_AnchoredPosition: {x: -7, y: 227}
   m_SizeDelta: {x: -1724.157, y: -1033.8567}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &24342637
@@ -2439,7 +2439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013225348790, guid: 8b40cffea67202d4bbf662b25de4c94a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4000013225348790, guid: 8b40cffea67202d4bbf662b25de4c94a, type: 3}
       propertyPath: m_LocalScale.x
@@ -3214,7 +3214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalScale.x
@@ -5307,7 +5307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalScale.x
@@ -5385,9 +5385,8 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls: []
-  startEventAfterDialogue: 1
+  startEventAfterDialogue: 0
   eventDelay: 0
-  dialogueManager: {fileID: 1290835977}
 --- !u!135 &645734555
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10012,7 +10011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 410012, guid: 848098b20205e584ba1d61f0ce0ffb61, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 410012, guid: 848098b20205e584ba1d61f0ce0ffb61, type: 3}
       propertyPath: m_LocalScale.x
@@ -12112,6 +12111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20864c798e01b224781a65e5de57ee35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 249076077}
   dialoguePanel: {fileID: 673900112}
   dialogueText: {fileID: 1774346693}
   dialogueSubtext: {fileID: 1789937590}
@@ -12284,9 +12284,8 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls: []
-  startEventAfterDialogue: 1
+  startEventAfterDialogue: 0
   eventDelay: 0
-  dialogueManager: {fileID: 1290835977}
 --- !u!1001 &1309452068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12367,19 +12366,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 8.93
   m_Center: {x: -0.00000047683716, y: 0, z: -0.00000017881398}
---- !u!114 &1317582511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317582505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc74e792f5cd49b438e97d7a18885c0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Object: {fileID: 249076074}
 --- !u!114 &1317582515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12396,10 +12382,21 @@ MonoBehaviour:
   dialogueType: 3
   interactAction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 972415937}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   startEventAfterDialogue: 1
-  eventDelay: 0
-  dialogueManager: {fileID: 1290835977}
+  eventDelay: 2
 --- !u!1001 &1327679971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14053,7 +14050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494216, guid: fe1b63d21d56ace418395e7a2fa4fea0, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 494216, guid: fe1b63d21d56ace418395e7a2fa4fea0, type: 3}
       propertyPath: m_LocalScale.x
@@ -14506,9 +14503,8 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls: []
-  startEventAfterDialogue: 1
+  startEventAfterDialogue: 0
   eventDelay: 0
-  dialogueManager: {fileID: 1290835977}
 --- !u!135 &1643175973
 SphereCollider:
   m_ObjectHideFlags: 0

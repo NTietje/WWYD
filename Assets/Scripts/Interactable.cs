@@ -19,7 +19,6 @@ public class Interactable : MonoBehaviour
     [SerializeField] private UnityEvent interactAction;
     [SerializeField] private bool startEventAfterDialogue = false;
     [SerializeField] private float eventDelay;
-    [SerializeField] private DialogueManager dialogueManager;
 
     private bool _inRange;
     private bool allowEventAfterDialogue;
@@ -36,8 +35,8 @@ public class Interactable : MonoBehaviour
                 if (interactionType == InteractionType.StartDialogue)
                 {
                     Debug.Log("will start dialog");
-                    dialogueManager.setDialogueType(dialogueType);
-                    dialogueManager.StartNewDialogue();
+                    DialogueManager.Instance.setDialogueType(dialogueType);
+                    DialogueManager.Instance.StartNewDialogue();
                     if (startEventAfterDialogue)
                     {
                         allowEventAfterDialogue = true; 
@@ -50,7 +49,7 @@ public class Interactable : MonoBehaviour
             }
         }
         if (interactAction != null & startEventAfterDialogue &
-            dialogueManager.getIsDialogueActive() & allowEventAfterDialogue)
+            !DialogueManager.Instance.getIsDialogueActive() & allowEventAfterDialogue)
         {
             allowEventAfterDialogue = false;
             StartCoroutine(ShowEvent());
@@ -69,7 +68,7 @@ public class Interactable : MonoBehaviour
         {
             Debug.Log("Player is in range");
             _inRange = true;
-            dialogueManager.ShowInteractPanel();
+            DialogueManager.Instance.ShowInteractPanel();
         }
     }
 
@@ -79,7 +78,7 @@ public class Interactable : MonoBehaviour
         {
             Debug.Log("Player is out of range");
             _inRange = false;
-            dialogueManager.HideInteractPanel();
+            DialogueManager.Instance.HideInteractPanel();
         }
     }
 }
