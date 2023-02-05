@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/02_Wasteland.unity
     guid: d6ea3b70c1bb32944898726cdf398e0a
+  - enabled: 1
+    path: Assets/Scenes/03_City_1.unity
+    guid: dbdb9ea2915cbf649817c63a1709aec0
+  - enabled: 1
+    path: Assets/Scenes/04_Fluss.unity
+    guid: d595c4bf8d12f1445b1218f14f3d088d
+  - enabled: 1
+    path: Assets/Scenes/05_Reaktor.unity
+    guid: 67d393fe5728bf0418c087dd907e5861
   m_configObjects: {}
