@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private Slider progressBar;
 
+    private bool _loadProgressActive = false;
     private float _target;
     // private string _nextScene;
 
@@ -23,10 +24,10 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        loadingPanel.SetActive(false);
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -34,10 +35,16 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        loadingPanel.SetActive(false);
+    }
+
     public async void LoadScene(string sceneName)
     {
         if (sceneName != null & sceneName != "")
         {
+            _loadProgressActive = true;
             progressBar.value = 0;
             _target = 0;
             var scene = SceneManager.LoadSceneAsync(sceneName);
@@ -56,11 +63,24 @@ public class LevelManager : MonoBehaviour
             await Task.Delay(2000);
 
             loadingPanel.SetActive(false);
+            _loadProgressActive = false;
+        }
+    }
+
+    public void LoadSceneImmediately(string sceneName)
+    {
+        if (sceneName != null & sceneName != "")
+        {
+            var scene = SceneManager.LoadSceneAsync(sceneName);
+            scene.allowSceneActivation = true;
         }
     }
 
     private void Update()
     {
-        progressBar.value = Mathf.MoveTowards(progressBar.value, _target, 3 * Time.deltaTime);
+        if (_loadProgressActive)
+        {
+            progressBar.value = Mathf.MoveTowards(progressBar.value, _target, 3 * Time.deltaTime); 
+        }
     }
 }
