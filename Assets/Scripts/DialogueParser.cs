@@ -112,6 +112,13 @@ public static class DialogueParser
                                                   " im roten Pulli hat hier alles zu Nichte gemacht und ist weggerannt. " +
                                                   "Erst kleben die sich auf die Autobahn und jetzt das!  Was für ein blödes Pack! " +
                                                   "Verschwinde lieber, hier ist alles drauf und dran hochzugehen!"));
+               
+                return dialogues;
+            case DialogueType.City2BadGuy:
+                dialogues.Add(new Dialogue("Ich", "Hey du! Du warst am E-Werk und hast ... ähh ... wirst die Leitungen zum alten Reaktor kappen. Warum tust du das?"));
+                dialogues.Add(new Dialogue("RPT", "Ähh, nein was redest du da? Was werde ich tun ... oder getan haben werden?! Du bist doch verrückt! *rennt weg*"));
+                dialogues.Add(new Dialogue("Ich", "Schon seeehr sus! Wenn er nichts zu verbergen hat, wieso läuft er dann von mir weg? Ich sollte ihm folgen..."));
+                
                 return dialogues;
             case DialogueType.HouseChoicesOne:
             {
@@ -122,6 +129,18 @@ public static class DialogueParser
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
             }
+            case DialogueType.Zeitung:
+                dialogues.Add(new Dialogue("", "Ein Zeitungsartikel mit der Überschrift: " +
+                                               "'Verletzte und Tote nach Klimademo-Ausschreitungen'"));
+                dialogues.Add(new Dialogue("Ich", "Hier ist ein Frauenname einer Toten eingekreist, ob sie ihm wohl nahe stand? " +
+                                                    "Das würde zumindest ein Motiv ergeben... "));
+
+                return dialogues;
+            case DialogueType.Stromplan:
+                dialogues.Add(new Dialogue("Ich", "Das sind doch die Strompläne zum E-Werk! Also scheint er doch der Verantwortliche zu sein. " +
+                                                    "Wie ist er bloß da rangekommen?! Das Ganze kann er doch wohl nicht alleine geplant haben..."));
+                
+                return dialogues;
             case DialogueType.FoundAxt:
                 dialogues.Add(new Dialogue("Ich", "Das ist wohl die Tatwaffe. Vielleicht sollte ich sie " +
                                                   "zur Sicherheit lieber bei mir halten..."));
@@ -179,13 +198,17 @@ public enum DialogueType
     ControlRoom,
     ReactorIntro,
     Powerhouse,
+    City2BadGuy,
     HouseChoicesOne,
     FoundAxt,
     NotFoundAxt,
     ConfrontOne,
     ConfrontTwo,
     HouseChoicesTwo,
-    Kill
+    Kill,
+    Stromplan,
+    Zeitung
+
 }
 
 public enum ChoiceType
