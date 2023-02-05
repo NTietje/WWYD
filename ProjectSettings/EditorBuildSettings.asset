@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/00_Menu.unity
+    guid: 0a1b334bef9a1444f8f585508f405e8f
+  - enabled: 1
     path: Assets/Scenes/01_Intro 1.unity
     guid: 7ae8b75262e36154a9d992aff4bacfd2
   - enabled: 1
@@ -23,4 +26,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/05_Steuerraum.unity
     guid: 35c1e744fe07222449c971255baff75f
+  - enabled: 1
+    path: Assets/Scenes/06_E-Werk.unity
+    guid: ec5451950cc856e40a4d333f7ca9d053
+  - enabled: 1
+    path: Assets/Scenes/03_City_2.unity
+    guid: 62bb06c53cbca3e4d86786da2031be6c
+  - enabled: 1
+    path: Assets/Scenes/08_Haus.unity
+    guid: 405436e65822eb74a8f280ea35efb10f
+  - enabled: 1
+    path: Assets/Scenes/09_Ende_1.unity
+    guid: 8bd85374cd313624eb2346d86951f4c8
+  - enabled: 1
+    path: Assets/Scenes/09_Ende_2.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

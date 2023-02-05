@@ -141,6 +141,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3282103663524188535}
     - target: {fileID: 2613589589942185414, guid: 25aaed683836524458e81bf14c26126d, type: 3}
+      propertyPath: typingDelay
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613589589942185414, guid: 25aaed683836524458e81bf14c26126d, type: 3}
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 5268726080076012678}

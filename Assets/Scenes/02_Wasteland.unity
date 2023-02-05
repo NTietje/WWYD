@@ -5248,6 +5248,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &645734555
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11991,7 +11992,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1851155770}
   dialogueSubtext: {fileID: 1789937590}
   dialogueSpeaker: {fileID: 1759522406}
-  typingDelay: 0
+  typingDelay: 0.02
   interactPanel: {fileID: 24342635}
 --- !u!1001 &1293331685
 PrefabInstance:
@@ -12160,6 +12161,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!1001 &1309452068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14330,6 +14332,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &1643175973
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18245,6 +18248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1317582516, guid: 7983e9cd69e2bb247a801e87466c1ae9, type: 3}
+      propertyPath: delay
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1317582516, guid: 7983e9cd69e2bb247a801e87466c1ae9, type: 3}
       propertyPath: animator
       value: 

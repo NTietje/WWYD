@@ -11293,6 +11293,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &1908405846
 SphereCollider:
   m_ObjectHideFlags: 0

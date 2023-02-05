@@ -25,7 +25,10 @@ public class SceneCall : MonoBehaviour
     private IEnumerator HandleAnimationAndSceneSwitch()
     {
         Debug.Log("start animation");
-        animator.SetBool("enable", true);
+        if (animator != null)
+        {
+            animator.SetBool("enable", true);
+        }
         if (animator2 != null)
         {
             animator2.SetBool("enable", true);

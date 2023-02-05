@@ -45,6 +45,19 @@ public static class DialogueParser
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
             }
+
+            case DialogueType.CityChoices2:
+            {
+                List<ChoiceType> choices = new List<ChoiceType>
+                {
+                    ChoiceType.StayWarnPeople,
+                    ChoiceType.StayTalkBadGuy,
+                    ChoiceType.InvestigateAKW
+                };
+                dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
+                return dialogues;
+            }
+
             case DialogueType.CityChoices:
             {
                 dialogues.Add(new Dialogue("Ich",
@@ -117,17 +130,20 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.City2BadGuy:
                 dialogues.Add(new Dialogue("Ich", "Hey du! Du warst am E-Werk und hast ... ähh ... wirst die Leitungen zum alten Reaktor kappen. Warum tust du das?"));
-                dialogues.Add(new Dialogue("BadGuy", "Ähh, nein was redest du da? Was werde ich tun ... oder getan haben werden?! Du bist doch verrückt! *rennt weg*"));
+                dialogues.Add(new Dialogue("Guy", "Ähh, nein was redest du da? Was werde ich tun ... oder getan haben werden?! Du bist doch verrückt! *rennt weg*"));
                 dialogues.Add(new Dialogue("Ich", "Schon seeehr sus! Wenn er nichts zu verbergen hat, wieso läuft er dann von mir weg? Ich sollte ihm folgen..."));
                 
                 return dialogues;
             case DialogueType.HouseChoicesOne:
             {
+                dialogues.Add(new Dialogue("Guy", "Du schon wieder! Was zur Hölle tust du in meinem Haus?! " +
+                                                  "Verschwinde! Sofort! Sonst kannst du was erleben..."));
                 List<ChoiceType> choices = new List<ChoiceType>
                 {
                     ChoiceType.End2,
-                    ChoiceType.StayTalkBadGuy
+                    ChoiceType.ConfrontBadGuy
                 };
+
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
             }
@@ -148,7 +164,7 @@ public static class DialogueParser
                                                   "zur Sicherheit lieber bei mir halten..."));
                 return dialogues;
             case DialogueType.NotFoundAxt:
-                dialogues.Add(new Dialogue("BadGuy", "Du schon wieder! Was zur Hölle tust du in meinem Haus?! " +
+                dialogues.Add(new Dialogue("Guy", "Du schon wieder! Was zur Hölle tust du in meinem Haus?! " +
                                                   "Verschwinde! Sofort! Sonst kannst du was erleben..."));
                 /* return dialogues;
             case DialogueType.ConfrontOne:
@@ -167,7 +183,7 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.ConfrontTwo:
                 dialogues.Add(new Dialogue("Ich", "Sag schon! Warum willst du ... ähh ... wolltest du die Welt zerstören?!"));
-                dialogues.Add(new Dialogue("BadGuy", "Ach wenn nicht jetzt, dann in einem Jahr oder zwei oder " +
+                dialogues.Add(new Dialogue("Guy", "Ach wenn nicht jetzt, dann in einem Jahr oder zwei oder " +
                                                   "5. spielt das eine Rolle?! Die Welt geht so oder so vor die Hunde. " +
                                                   "Ich wollte uns allen einen gefallen tun ... vor allem IHR ... *läuft in Tränen davon*"));
                 return dialogues;
@@ -210,7 +226,8 @@ public enum DialogueType
     // HouseChoicesTwo,
     Kill,
     Stromplan,
-    Zeitung
+    Zeitung,
+    CityChoices2
 
 }
 
@@ -225,7 +242,8 @@ public enum ChoiceType
     BackToCity,
     EWerk,
     End2,
-    StayTalkBadGuy
+    StayTalkBadGuy,
+    ConfrontBadGuy
 }
 
 public static class ChoiceParser
@@ -253,6 +271,8 @@ public static class ChoiceParser
             case ChoiceType.End2:
                 return "Typ mit Axt töten";
             case ChoiceType.StayTalkBadGuy:
+                return "Roter-Pulli-Typ suchen";
+            case ChoiceType.ConfrontBadGuy:
                 return "Typ zur Rede stellen";
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -283,6 +303,8 @@ public static class ChoiceParser
                 return "06_E-Werk";
             case ChoiceType.End2:
                 return "09_Ende_2";
+            case ChoiceType.ConfrontBadGuy:
+                return "NONE";
 
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -298,7 +320,7 @@ public enum Speaker
     Npc3City,
     Npc4City,
     Electrician,
-    BadGuy,
+    Guy,
     None
 }
 

@@ -443,6 +443,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &292001150
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -622,6 +623,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &325717085
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1079,9 +1081,22 @@ MonoBehaviour:
   dialogueType: 17
   interactAction:
     m_PersistentCalls:
-      m_Calls: []
-  startEventAfterDialogue: 0
+      m_Calls:
+      - m_Target: {fileID: 1289056674}
+        m_TargetAssemblyTypeName: SceneCall, Assembly-CSharp
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  startEventAfterDialogue: 1
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &602097634
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1433,6 +1448,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &845411335
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1544,6 +1560,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &1014456845
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1659,6 +1676,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &1089583193
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2032,6 +2050,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84bb406b82cecb24cb1ffe5d4359339d, type: 3}
+--- !u!1 &1289056673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1289056675}
+  - component: {fileID: 1289056674}
+  m_Layer: 0
+  m_Name: SceneCall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1289056674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289056673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d428991d6cb11945af2264e9782e004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 08_Haus
+  delay: 2
+  animator: {fileID: 0}
+  animator2: {fileID: 0}
+--- !u!4 &1289056675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289056673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.99577, y: 0.0000009536743, z: -11.8373375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1290185446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4903034567477216, guid: c637a821140f92a4dbb62e352cf8f140, type: 3}
@@ -3068,6 +3134,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &1794140647
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3256,6 +3323,7 @@ MonoBehaviour:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &1838271158
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3469,13 +3537,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124616478}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c3b601c7726ba143a77947fa74e391c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0
-  dialogueType: 0
+  delay: 2
+  dialogueType: 25
+  sceneCall: {fileID: 0}
 --- !u!1001 &2132662550
 PrefabInstance:
   m_ObjectHideFlags: 0

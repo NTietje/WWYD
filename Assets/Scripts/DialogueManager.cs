@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Choices UI")]
     // [SerializeField] private GameObject choicesPanel;
     [Header("Dialogue Settings")]
-    [SerializeField] float typingDelay;
+  //  [SerializeField] float typingDelay;
     [Header("Interact Press UI")]
     [SerializeField] private GameObject interactPanel;
     
@@ -178,7 +178,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char c in line)
         {
             dialogueText.text += c;
-            yield return new WaitForSeconds(typingDelay);
+            yield return new WaitForSeconds(0.02f);
         }
 
         _dialogueIsTyping = false;
