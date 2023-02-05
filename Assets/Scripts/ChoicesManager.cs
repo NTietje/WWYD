@@ -58,18 +58,21 @@ public class ChoicesManager : MonoBehaviour
     }
     
     public void StartChoices(List<ChoiceType> choices)
-    {
+    {   
+        Debug.Log("in StartChoices");
+        foreach (var text in _texts)
+        {
+            text.text = "";
+        }
         indicator1.SetActive(true);
         indicator2.SetActive(false);
         indicator3.SetActive(false);
-        Debug.Log("in StartChoices");
         _choices = choices;
-        Debug.Log("choices:" + choices);
-        Debug.Log("_choices:" + _choices[0] + _choices[1] + _choices[2]);
         int index = 0;
         _selectedChoice = 0;
         foreach (var choice in _choices)
         {
+            Debug.Log("choice:" + choice);
             string text = ChoiceParser.GetTextForChoiceType(choice);
             Debug.Log("text: " + text);
             _texts[index].text = text;

@@ -90,7 +90,7 @@ public static class DialogueParser
                     ChoiceType.People,
                     ChoiceType.LookAround
                 };
-                dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
+                dialogues.Add(new Dialogue("Ich", "Was soll ich tun?",  "", choices));
                 return dialogues; 
             }
             case DialogueType.ReactorIntro:
