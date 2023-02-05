@@ -1,6 +1,5 @@
-using System;
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AutoStartDialogue : MonoBehaviour
@@ -21,9 +20,7 @@ public class AutoStartDialogue : MonoBehaviour
     
     private IEnumerator DisplayDialogue()
     {
-        Debug.Log("will wait till dialogue");
         yield return new WaitForSeconds(delay);
-        Debug.Log("will start dialogue");
         DialogueManager.Instance.setDialogueType(dialogueType);
         DialogueManager.Instance.StartNewDialogue();
     }

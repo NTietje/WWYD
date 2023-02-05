@@ -25,23 +25,34 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.WastelandSphere:
                 dialogues.Add(new Dialogue("Ich", "Oh man, jetzt fange ich an auch noch Hallus zu schieben!" +
-                                                  " Verdammt, was ist das?!*greift nach Kugel*"));
+                                                  " Verdammt, was ist das?! *greift nach Kugel*"));
                 return dialogues;
             case DialogueType.CityIntro:
+            {
                 dialogues.Add(new Dialogue("Ich",
                     "Was, wo ,wie... *reibt die Augen* Bin ich in einem schlechten Film gelandet? " +
                     "Die Hallus schieben echt zu krass! Ich bin wieder daheim! *den Tränen nahe* Das muss wohl " +
-                    "irgendwas mit dieser Kugel zu tun haben...*liest Datum auf einer Anzeige* " +
-                    "Es ist der 13.01.2050. Aber das ist der Tag, der... Das darf wohl nicht wahr sein, " +
-                    "muss ich jetzt die Krise abwenden oder so?"));
-                return dialogues;
-            case DialogueType.CityChoices:
-            {
+                    "irgendwas mit dieser Kugel zu tun haben..."));
+                dialogues.Add(new Dialogue("Ich",
+                    "*liest Datum auf einer Anzeige* Es ist der 13.01.2050. Aber das ist der Tag, der... " +
+                    "Das darf wohl nicht wahr sein, muss ich jetzt die Krise abwenden oder so?"));
                 List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    ChoiceType.People,
+                    ChoiceType.StayWarnPeople,
                     ChoiceType.Chill,
-                    ChoiceType.Investigate
+                    ChoiceType.InvestigateAKW
+                };
+                dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
+                return dialogues;
+            }
+            case DialogueType.CityChoices:
+            {
+                dialogues.Add(new Dialogue("Ich",
+                    "Das war wohl nichts. Kein Wunder, dass keiner mir glaubt. Ich sehe aus und rieche wie das Innere eines Abwasserkanals..."));
+                List<ChoiceType> choices = new List<ChoiceType>
+                {
+                    ChoiceType.Chill,
+                    ChoiceType.InvestigateAKW
                 };
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
@@ -179,10 +190,11 @@ public enum DialogueType
 
 public enum ChoiceType
 {
+    StayWarnPeople,
     People,
     PeopleAfterEStation,
     Chill,
-    Investigate,
+    InvestigateAKW,
     LookAround
 }
 
@@ -192,14 +204,16 @@ public static class ChoiceParser
     {
         switch (type)
         {
+            case ChoiceType.StayWarnPeople:
+                return "Leute warnen";
             case ChoiceType.People:
                 return "Leute warnen";
             case ChoiceType.PeopleAfterEStation:
                 return "Leute warnen";
             case ChoiceType.Chill:
                 return "Tag geniessen";
-            case ChoiceType.Investigate:
-                return "Ursache suchen";
+            case ChoiceType.InvestigateAKW:
+                return "Zum AKW gehen";
             case ChoiceType.LookAround:
                 return "Umsehen";
             default:
@@ -211,13 +225,15 @@ public static class ChoiceParser
     {
         switch (type)
         {
+            case ChoiceType.StayWarnPeople:
+                return "NONE";
             case ChoiceType.People:
                 return "03_City_1";
             case ChoiceType.PeopleAfterEStation:
-                return "03_City_2";
+                return "03_City_3";
             case ChoiceType.Chill:
                 return "04_Fluss";
-            case ChoiceType.Investigate:
+            case ChoiceType.InvestigateAKW:
                 return "05_Steuerraum";
             case ChoiceType.LookAround:
                 return "05_Reaktor";

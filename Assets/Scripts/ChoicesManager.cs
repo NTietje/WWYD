@@ -133,6 +133,9 @@ public class ChoicesManager : MonoBehaviour
                 if (nextScene != null)
                 {
                     LevelManager.Instance.LoadScene(nextScene);
+                } else if (nextScene == "NONE")
+                {
+                    
                 }
                 _choicesActive = false;
                 choicesPanel.SetActive(false);

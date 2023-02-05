@@ -1,28 +1,18 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-public enum InteractionType
-{
-    OnlyInteract,
-    StartDialogue
-}
-
-public class Interactable : MonoBehaviour
+public class InteractableNPCCount : MonoBehaviour
 {
     [Header("Interactable Settings")]
+    
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private DialogueType dialogueType;
     [Header("Start Events after Interaction")]
     [SerializeField] private UnityEvent interactAction = null;
     [SerializeField] private bool startEventAfterDialogue = false;
     [SerializeField] private float eventDelay;
-    [Header("Observables")]
-    [SerializeField] private bool countTalk = false;
 
-    private bool allowCounting = false;
     private bool _inRange;
     private bool allowEventAfterDialogue;
     private KeyCode _interactKey = KeyCode.E;
@@ -40,7 +30,6 @@ public class Interactable : MonoBehaviour
                     Debug.Log("will start dialog");
                     DialogueManager.Instance.setDialogueType(dialogueType);
                     DialogueManager.Instance.StartNewDialogue();
-                    allowCounting = true;
                     if (startEventAfterDialogue)
                     {
                         allowEventAfterDialogue = true; 
@@ -51,12 +40,6 @@ public class Interactable : MonoBehaviour
                     StartCoroutine(ShowEvent());
                 }
             }
-        }
-
-        if (allowCounting & !DialogueManager.Instance.getIsDialogueActive() & countTalk)
-        {
-            allowCounting = false;
-            GameStoryManager.Instance.CountUpPeopleTalkedTo();
         }
         if (interactAction != null & startEventAfterDialogue &
             !DialogueManager.Instance.getIsDialogueActive() & allowEventAfterDialogue)
