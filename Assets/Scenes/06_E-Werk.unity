@@ -7096,7 +7096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 03_City_2
-  delay: 10
+  delay: 8
   animator: {fileID: 50277557}
   animator2: {fileID: 0}
 --- !u!4 &1081188749
