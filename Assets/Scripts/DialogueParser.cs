@@ -89,7 +89,7 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.RiverIntro:
                 dialogues.Add(new Dialogue("Ich", "Ach wie schön. Wie sehr habe ich diesen Ort nur vermisst! *hicks* " +
-                                                  "Wenigstens ist bald alles vorbei und dann bin ich bei meinen Liebsten..."));
+                                                  "Schön, dass dieser Albtraum gleich vorbei ist..."));
                 return dialogues;
             case DialogueType.ControlRoomIntro:
                 dialogues.Add(new Dialogue("Ich", "Ahhh, was ist denn hier los?! Ich denke ich sollte nicht hier sein."));
