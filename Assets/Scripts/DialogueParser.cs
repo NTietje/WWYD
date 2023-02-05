@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,11 +37,11 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.CityChoices:
             {
-                List<Choice> choices = new List<Choice>
+                List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    Choice.People,
-                    Choice.Chill,
-                    Choice.Investigate
+                    ChoiceType.People,
+                    ChoiceType.Chill,
+                    ChoiceType.Investigate
                 };
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
@@ -72,11 +73,10 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.ControlRoomChoices:
             {
-                List<Choice> choices = new List<Choice>
+                List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    Choice.People,
-                    Choice.Chill,
-                    Choice.OpenDangerDoor
+                    ChoiceType.People,
+                    ChoiceType.LookAround
                 };
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
@@ -98,10 +98,9 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.HouseChoicesOne:
             {
-                List<Choice> choices = new List<Choice>
+                List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    Choice.LookAround,
-                    Choice.Confront
+                    ChoiceType.LookAround
                 };
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
@@ -120,10 +119,9 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.HouseChoicesTwo:
             {
-                List<Choice> choices = new List<Choice>
+                List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    Choice.Confront,
-                    Choice.Kill
+                    ChoiceType.LookAround
                 };
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
@@ -173,15 +171,54 @@ public enum DialogueType
     Kill
 }
 
-public enum Choice
+public enum ChoiceType
 {
     People,
+    PeopleAfterEStation,
     Chill,
     Investigate,
-    OpenDangerDoor,
-    Confront,
-    LookAround,
-    Kill
+    LookAround
+}
+
+public static class ChoiceParser
+{
+    public static string GetTextForChoiceType(ChoiceType type)
+    {
+        switch (type)
+        {
+            case ChoiceType.People:
+                return "Leute warnen";
+            case ChoiceType.PeopleAfterEStation:
+                return "Leute warnen";
+            case ChoiceType.Chill:
+                return "Tag geniessen";
+            case ChoiceType.Investigate:
+                return "Ursache suchen";
+            case ChoiceType.LookAround:
+                return "Umsehen";
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+    }
+    
+    public static string GetSceneForChoiceType(ChoiceType type)
+    {
+        switch (type)
+        {
+            case ChoiceType.People:
+                return "03_City_1";
+            case ChoiceType.PeopleAfterEStation:
+                return "03_City_2";
+            case ChoiceType.Chill:
+                return "04_Fluss";
+            case ChoiceType.Investigate:
+                return "05_Steuerraum";
+            case ChoiceType.LookAround:
+                return "05_Reaktor";
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+    }
 }
 
 public enum Speaker
@@ -198,12 +235,12 @@ public enum Speaker
 
 public class Dialogue
 {
-    public string Speaker { get; set; }
-    public string Text { get; set; }
-    public string Subtext { get; set; }
-    public List<Choice> Choices { get; set; }
+    public string Speaker;
+    public string Text;
+    public string Subtext;
+    public List<ChoiceType> Choices;
 
-    public Dialogue(string speaker, string text, string subtext = null, List<Choice> choices = null)
+    public Dialogue(string speaker, string text, string subtext = null, List<ChoiceType> choices = null)
     {
         this.Speaker = speaker;
         this.Text = text;

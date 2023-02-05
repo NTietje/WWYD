@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -9,11 +10,11 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private Text dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Text dialogueSubtext;
     [SerializeField] private Text dialogueSpeaker;
     [Header("Choices UI")]
-    [SerializeField] private GameObject choicesPanel;
+    // [SerializeField] private GameObject choicesPanel;
     [Header("Dialogue Settings")]
     [SerializeField] float typingDelay;
     [Header("Interact Press UI")]
@@ -34,6 +35,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        dialoguePanel.SetActive(false);
         if (Instance != null)
         {
             Debug.LogWarning("Found more than one DialogueManager");
@@ -138,17 +140,17 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueSubtext.text = _dialogues[_dialogueIndex].Subtext;
             }
-
             if (_dialogues[_dialogueIndex].Choices != null)
             {
-                choicesPanel.SetActive(true);
-                // set choices
+                Debug.Log("choices found");
+                Debug.Log("choices count: "+ _dialogues[_dialogueIndex].Choices.Count);
+                ChoicesManager.Instance.StartChoices(_dialogues[_dialogueIndex].Choices);
             }
             else
             {
-                choicesPanel.SetActive(false);
+                Debug.Log("no choices");
             }
-            
+
             _dialogueIndex++;
         }
         else
@@ -179,6 +181,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += c;
             yield return new WaitForSeconds(typingDelay);
         }
+
         _dialogueIsTyping = false;
     }
 }

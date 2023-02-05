@@ -114,9 +114,7 @@ public class AnimationAndMovementController : MonoBehaviour
         currentRunMovement.y += gravity;
     }
   }  
-    
-    
-    
+  
     void Update()
     {
         handleRotation();
@@ -132,13 +130,23 @@ public class AnimationAndMovementController : MonoBehaviour
 
     void OnEnable()
     {
-
         playerInput.CharacterControls.Enable();
     }
 
     void OnDisable()
     {
-
         playerInput.CharacterControls.Disable();
+    }
+
+    public void ActivatePlayerMovement(bool activate)
+    {
+        if (activate)
+        {
+            OnEnable();
+        }
+        else
+        {
+            OnDisable();
+        }
     }
 }

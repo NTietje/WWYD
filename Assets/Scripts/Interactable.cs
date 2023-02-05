@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private DialogueType dialogueType;
     [Header("Start Events after Interaction")]
-    [SerializeField] private UnityEvent interactAction;
+    [SerializeField] private UnityEvent interactAction = null;
     [SerializeField] private bool startEventAfterDialogue = false;
     [SerializeField] private float eventDelay;
 
