@@ -123,10 +123,9 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.Powerhouse:
                 dialogues.Add(new Dialogue("NPC", "Ach verdammt nochmal, sieh dir das an. Irgend so ein Typ" +
-                                                  " im roten Pulli hat hier alles zu Nichte gemacht und ist weggerannt. " +
-                                                  "Erst kleben die sich auf die Autobahn und jetzt das!  Was für ein blödes Pack! " +
-                                                  "Verschwinde lieber, hier ist alles drauf und dran hochzugehen!"));
-               
+                                                  " im roten Pulli hat hier alles zunichte gemacht und ist weggerannt. " +
+                                                  "Erst kleben die sich auf die Autobahn und jetzt das!  Was für ein blödes Pack!"));
+                dialogues.Add(new Dialogue("NPC", "Verschwinde lieber, hier ist alles drauf und dran hochzugehen!"));
                 return dialogues;
             case DialogueType.City2BadGuy:
                 dialogues.Add(new Dialogue("Ich", "Hey du! Du warst am E-Werk und hast ... ähh ... wirst die Leitungen zum alten Reaktor kappen. Warum tust du das?"));
