@@ -61,8 +61,10 @@ public class LevelManager : MonoBehaviour
             scene.allowSceneActivation = true;
 
             await Task.Delay(2000);
-
-            loadingPanel.SetActive(false);
+            if (loadingPanel != null)
+            {
+                loadingPanel.SetActive(false);
+            }
             _loadProgressActive = false;
         }
     }

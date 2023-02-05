@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/05_Reaktor.unity
     guid: 67d393fe5728bf0418c087dd907e5861
+  - enabled: 1
+    path: Assets/Scenes/05_Steuerraum.unity
+    guid: 35c1e744fe07222449c971255baff75f
   m_configObjects: {}
