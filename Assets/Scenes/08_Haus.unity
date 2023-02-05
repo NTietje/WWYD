@@ -533,12 +533,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 25
+  dialogueType: 24
   interactAction:
     m_PersistentCalls:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!4 &123217740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400022, guid: 47af50246352ed14da4ade618d736175, type: 3}
@@ -903,12 +904,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 18
+  dialogueType: 19
   interactAction:
     m_PersistentCalls:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &348245815
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4213,12 +4215,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 24
+  dialogueType: 23
   interactAction:
     m_PersistentCalls:
       m_Calls: []
   startEventAfterDialogue: 0
   eventDelay: 0
+  countTalk: 0
 --- !u!135 &1363458899
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5010,6 +5013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   dialogueType: 0
+  sceneCall: {fileID: 0}
 --- !u!1 &1791829314
 GameObject:
   m_ObjectHideFlags: 0

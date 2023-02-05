@@ -253,7 +253,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.03
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -619,6 +619,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5268726080076012678, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999228680923513518, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7233256250281844866, guid: c61b7c9e50159494699a662321cc40ee, type: 3}

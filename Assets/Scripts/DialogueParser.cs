@@ -98,14 +98,15 @@ public static class DialogueParser
                 dialogues.Add(new Dialogue("Ich", "Hmm scheinbar stimmt was nicht im Elektrizitätswerk."));
                 List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    ChoiceType.People,
-                    ChoiceType.LookAround
+                    ChoiceType.BackToCity,
+                    ChoiceType.LookAround,
+                    ChoiceType.EWerk
                 };
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?",  "", choices));
                 return dialogues; 
             }
             case DialogueType.ReactorIntro:
-                dialogues.Add(new Dialogue("Ich", "Oh oh, ich glaube das 'Betreten verboten'-Schild hing nicht umsonst da. *Kugel pulsiert stärker und fliegt auf den Reaktor zu*"));
+                dialogues.Add(new Dialogue("Ich", "Oh oh, ich glaube das 'Betreten verboten'-Schild hing nicht umsonst da."));
                 return dialogues;
             case DialogueType.Powerhouse:
                 dialogues.Add(new Dialogue("NPC", "Ach verdammt nochmal, sieh dir das an. Irgend so ein Typ" +
@@ -116,7 +117,7 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.City2BadGuy:
                 dialogues.Add(new Dialogue("Ich", "Hey du! Du warst am E-Werk und hast ... ähh ... wirst die Leitungen zum alten Reaktor kappen. Warum tust du das?"));
-                dialogues.Add(new Dialogue("RPT", "Ähh, nein was redest du da? Was werde ich tun ... oder getan haben werden?! Du bist doch verrückt! *rennt weg*"));
+                dialogues.Add(new Dialogue("BadGuy", "Ähh, nein was redest du da? Was werde ich tun ... oder getan haben werden?! Du bist doch verrückt! *rennt weg*"));
                 dialogues.Add(new Dialogue("Ich", "Schon seeehr sus! Wenn er nichts zu verbergen hat, wieso läuft er dann von mir weg? Ich sollte ihm folgen..."));
                 
                 return dialogues;
@@ -124,7 +125,8 @@ public static class DialogueParser
             {
                 List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    ChoiceType.LookAround
+                    ChoiceType.End2,
+                    ChoiceType.StayTalkBadGuy
                 };
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
@@ -148,11 +150,11 @@ public static class DialogueParser
             case DialogueType.NotFoundAxt:
                 dialogues.Add(new Dialogue("BadGuy", "Du schon wieder! Was zur Hölle tust du in meinem Haus?! " +
                                                   "Verschwinde! Sofort! Sonst kannst du was erleben..."));
-                return dialogues;
+                /* return dialogues;
             case DialogueType.ConfrontOne:
                 dialogues.Add(new Dialogue("BadGuy", "Du schon wieder! Was zur Hölle tust du in meinem Haus?! " +
-                                                     "Du weißt schon viel zu viel! *greift zur Axt und tötet dich*"));
-                return dialogues;
+                                                     "Du weißt schon viel zu viel! *greift zur Axt und tötet dich*")); */
+            /*     return dialogues;
             case DialogueType.HouseChoicesTwo:
             {
                 List<ChoiceType> choices = new List<ChoiceType>
@@ -161,7 +163,8 @@ public static class DialogueParser
                 };
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
-            }
+            } */
+                return dialogues;
             case DialogueType.ConfrontTwo:
                 dialogues.Add(new Dialogue("Ich", "Sag schon! Warum willst du ... ähh ... wolltest du die Welt zerstören?!"));
                 dialogues.Add(new Dialogue("BadGuy", "Ach wenn nicht jetzt, dann in einem Jahr oder zwei oder " +
@@ -202,9 +205,9 @@ public enum DialogueType
     HouseChoicesOne,
     FoundAxt,
     NotFoundAxt,
-    ConfrontOne,
+    //ConfrontOne,
     ConfrontTwo,
-    HouseChoicesTwo,
+    // HouseChoicesTwo,
     Kill,
     Stromplan,
     Zeitung
@@ -218,7 +221,11 @@ public enum ChoiceType
     PeopleAfterEStation,
     Chill,
     InvestigateAKW,
-    LookAround
+    LookAround,
+    BackToCity,
+    EWerk,
+    End2,
+    StayTalkBadGuy
 }
 
 public static class ChoiceParser
@@ -233,12 +240,20 @@ public static class ChoiceParser
                 return "Leute warnen";
             case ChoiceType.PeopleAfterEStation:
                 return "Leute warnen";
+                case ChoiceType.BackToCity:
+                return "Zurück zur Stadt";
             case ChoiceType.Chill:
                 return "Tag geniessen";
             case ChoiceType.InvestigateAKW:
                 return "Zum AKW gehen";
             case ChoiceType.LookAround:
                 return "Umsehen";
+            case ChoiceType.EWerk:
+                return "Zum E-Werk gehen";
+            case ChoiceType.End2:
+                return "Typ mit Axt töten";
+            case ChoiceType.StayTalkBadGuy:
+                return "Typ zur Rede stellen";
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
@@ -250,7 +265,11 @@ public static class ChoiceParser
         {
             case ChoiceType.StayWarnPeople:
                 return "NONE";
+            case ChoiceType.StayTalkBadGuy:
+                return "NONE";
             case ChoiceType.People:
+                return "03_City_1";
+                case ChoiceType.BackToCity:
                 return "03_City_1";
             case ChoiceType.PeopleAfterEStation:
                 return "03_City_3";
@@ -260,6 +279,11 @@ public static class ChoiceParser
                 return "05_Steuerraum";
             case ChoiceType.LookAround:
                 return "05_Reaktor";
+            case ChoiceType.EWerk:
+                return "06_E-Werk";
+            case ChoiceType.End2:
+                return "09_Ende_2";
+
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }

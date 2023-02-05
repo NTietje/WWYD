@@ -557,7 +557,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -753,6 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 2
   dialogueType: 12
+  sceneCall: {fileID: 0}
 --- !u!1 &376184515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -208595431880416365, guid: ad9a57415a7bc224a99c726e561f9487, type: 3}
