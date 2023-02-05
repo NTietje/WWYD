@@ -24,15 +24,20 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        loadingPanel.SetActive(false);
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        loadingPanel.SetActive(false);
     }
 
     public async void LoadScene(string sceneName)

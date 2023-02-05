@@ -68,10 +68,9 @@ public static class DialogueParser
                                                   "Wenigstens ist bald alles vorbei und dann bin ich bei meinen Liebsten..."));
                 return dialogues;
             case DialogueType.ControlRoomIntro:
-                dialogues.Add(new Dialogue("Ich", "Ahhh, was ist denn hier los?! Ich denke ich sollte nicht hier sein. " +
-                                                  "*Kugel pulsiert* Die Kugel will mir wohl auch irgendetwas sagen..."));
+                dialogues.Add(new Dialogue("Ich", "Ahhh, was ist denn hier los?! Ich denke ich sollte nicht hier sein."));
                 return dialogues;
-            case DialogueType.ControlRoomChoices:
+            case DialogueType.ControlRoomChoices: // TODO remove?
             {
                 List<ChoiceType> choices = new List<ChoiceType>
                 {
@@ -82,11 +81,18 @@ public static class DialogueParser
                 return dialogues;
             }
             case DialogueType.ControlRoom:
+            {
                 dialogues.Add(new Dialogue("", "Auf dem Monitor siehst du eine blinkende Warnung: " +
                                                "'Energiezufuhr der Kühlung überprüfen! Kritischer Zustand.'"));
-                dialogues.Add(new Dialogue("Ich", "Hmm scheinbar stimmt was nicht im Elektrizitätswerk. " +
-                                                  "Ich muss mich beeilen, nichts wie weg hier."));
-                return dialogues;
+                dialogues.Add(new Dialogue("Ich", "Hmm scheinbar stimmt was nicht im Elektrizitätswerk."));
+                List<ChoiceType> choices = new List<ChoiceType>
+                {
+                    ChoiceType.People,
+                    ChoiceType.LookAround
+                };
+                dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
+                return dialogues; 
+            }
             case DialogueType.ReactorIntro:
                 dialogues.Add(new Dialogue("Ich", "Oh oh, ich glaube das 'Betreten verboten'-Schild hing nicht umsonst da. *Kugel pulsiert stärker und fliegt auf den Reaktor zu*"));
                 return dialogues;
