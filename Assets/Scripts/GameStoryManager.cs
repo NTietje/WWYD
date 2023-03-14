@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameStoryManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class GameStoryManager : MonoBehaviour
     public static GameStoryManager Instance;
     
     private int peopleTalkedCount = 0;
+    private List<string> spokenPeopleIDs;
+
     private void Awake()
     {
         if (Instance != null)
@@ -16,17 +19,22 @@ public class GameStoryManager : MonoBehaviour
         {
             Instance = this;
         }
+        spokenPeopleIDs = new List<string>();
     }
 
-    public void CountUpPeopleTalkedTo()
+    public void CountUpPeopleTalkedTo(string objectID)
     {
-        peopleTalkedCount += 1;
-        Debug.Log("talked to count: " + peopleTalkedCount);
-        if (peopleTalkedCount == 4)
+        if (!spokenPeopleIDs.Contains(objectID))
         {
-            Debug.Log("talked to 4 People");
-            peopleTalkedCount = 0;
-            StartDialogueWithDelay(2, DialogueType.CityChoices);
+            spokenPeopleIDs.Add(objectID);
+            peopleTalkedCount += 1;
+            Debug.Log("talked to count: " + peopleTalkedCount);
+            if (peopleTalkedCount == 4)
+            {
+                Debug.Log("talked to 4 People");
+                peopleTalkedCount = 0;
+                StartDialogueWithDelay(2, DialogueType.CityChoices);
+            }
         }
     }
     
