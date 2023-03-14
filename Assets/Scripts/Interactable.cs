@@ -55,8 +55,9 @@ public class Interactable : MonoBehaviour
 
         if (allowCounting & !DialogueManager.Instance.getIsDialogueActive() & countTalk)
         {
+            int objectID = gameObject.GetInstanceID();
             allowCounting = false;
-            GameStoryManager.Instance.CountUpPeopleTalkedTo();
+            GameStoryManager.Instance.CountUpPeopleTalkedTo(objectID.ToString());
         }
         if (interactAction != null & startEventAfterDialogue &
             !DialogueManager.Instance.getIsDialogueActive() & allowEventAfterDialogue)
