@@ -159,7 +159,7 @@ public static class DialogueParser
                 
                 return dialogues;
             case DialogueType.FoundAxt:
-                dialogues.Add(new Dialogue("Ich", "Das ist wohl die Tatwaffe. Vielleicht sollte ich sie " +
+                dialogues.Add(new Dialogue("Ich", "Das ist wohl die Tatwaffe. Ich sollte sie " +
                                                   "zur Sicherheit lieber bei mir halten..."));
                 return dialogues;
             case DialogueType.NotFoundAxt:
