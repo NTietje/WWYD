@@ -536,8 +536,20 @@ MonoBehaviour:
   dialogueType: 24
   interactAction:
     m_PersistentCalls:
-      m_Calls: []
-  startEventAfterDialogue: 0
+      m_Calls:
+      - m_Target: {fileID: 571833768}
+        m_TargetAssemblyTypeName: GameStoryManager, Assembly-CSharp
+        m_MethodName: PaperWereFound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  startEventAfterDialogue: 1
   eventDelay: 0
   countTalk: 0
 --- !u!4 &123217740 stripped
@@ -907,8 +919,32 @@ MonoBehaviour:
   dialogueType: 19
   interactAction:
     m_PersistentCalls:
-      m_Calls: []
-  startEventAfterDialogue: 0
+      m_Calls:
+      - m_Target: {fileID: 571833768}
+        m_TargetAssemblyTypeName: GameStoryManager, Assembly-CSharp
+        m_MethodName: AxeWasFound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 348245810}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  startEventAfterDialogue: 1
   eventDelay: 0
   countTalk: 0
 --- !u!135 &348245815
@@ -1745,6 +1781,51 @@ Transform:
   m_Father: {fileID: 463921972}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &571833767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571833769}
+  - component: {fileID: 571833768}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &571833768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571833767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d1b4a648fea934594ccdcc7ec579e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  badGuy: {fileID: 0}
+--- !u!4 &571833769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571833767}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.499233, y: 2.3851295, z: 11.482157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &584671371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4363,8 +4444,32 @@ MonoBehaviour:
   dialogueType: 23
   interactAction:
     m_PersistentCalls:
-      m_Calls: []
-  startEventAfterDialogue: 0
+      m_Calls:
+      - m_Target: {fileID: 571833768}
+        m_TargetAssemblyTypeName: GameStoryManager, Assembly-CSharp
+        m_MethodName: PowerPlanWasFound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameStoryManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  startEventAfterDialogue: 1
   eventDelay: 0
   countTalk: 0
 --- !u!135 &1363458899

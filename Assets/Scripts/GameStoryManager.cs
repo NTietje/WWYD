@@ -6,8 +6,13 @@ public class GameStoryManager : MonoBehaviour
 {
     public static GameStoryManager Instance;
     
+    [SerializeField] private GameObject badGuy;
+    
     private int peopleTalkedCount = 0;
     private List<string> spokenPeopleIDs;
+    private bool playerHasAxe = false;
+    private bool newspaperFound = false;
+    private bool powerPlanFound = false;
 
     private void Awake()
     {
@@ -21,6 +26,41 @@ public class GameStoryManager : MonoBehaviour
         }
         spokenPeopleIDs = new List<string>();
     }
+
+    private void CheckAllEvidenceFound()
+    {
+        if (playerHasAxe && newspaperFound && powerPlanFound)
+        {
+            startBadGuyInHouseAnimation();
+        }
+    }
+
+    private void startBadGuyInHouseAnimation()
+    {
+        Debug.Log("will start bad guy in house animation");
+    }
+
+    public void AxeWasFound()
+    {
+        playerHasAxe = true;
+        Debug.Log("playerHasAxe true");
+        CheckAllEvidenceFound();
+    } 
+    
+    public void PaperWereFound()
+    {
+        newspaperFound = true;
+        Debug.Log("newspaperFound true");
+        CheckAllEvidenceFound();
+
+    } 
+    
+    public void PowerPlanWasFound()
+    {
+        powerPlanFound = true;
+        Debug.Log("powerPlanFound true");
+        CheckAllEvidenceFound();
+    } 
 
     public void CountUpPeopleTalkedTo(string objectID)
     {
