@@ -1145,6 +1145,14 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1851784845}
+    - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: timeHours
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: timeMinutes
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 8925048241716620980, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_RootOrder
       value: 8

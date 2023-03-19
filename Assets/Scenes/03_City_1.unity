@@ -1299,7 +1299,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2481,7 +2481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3185364304940955779, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4937686147630951802, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_Name
@@ -2499,6 +2499,14 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1851784845}
+    - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: timeHours
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: timeMinutes
+      value: 59
+      objectReference: {fileID: 0}
     - target: {fileID: 8925048241716620980, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_RootOrder
       value: 26
