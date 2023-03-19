@@ -145,7 +145,7 @@ public static class DialogueParser
                                                   "Verschwinde! Sofort! Sonst kannst du was erleben..."));
                 List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    ChoiceType.End2,
+                    ChoiceType.EndKillBadGuy,
                     ChoiceType.ConfrontBadGuy
                 };
 
@@ -186,7 +186,7 @@ public static class DialogueParser
                 return dialogues;
             } */
                 return dialogues;
-            case DialogueType.ConfrontTwo:
+            case DialogueType.ConfrontBadGuy:
                 dialogues.Add(new Dialogue("Ich", "Sag schon! Warum willst du ... ähh ... wolltest du die Welt zerstören?!"));
                 dialogues.Add(new Dialogue("Guy", "Ach wenn nicht jetzt, dann in einem Jahr oder zwei oder " +
                                                   "5. spielt das eine Rolle?! Die Welt geht so oder so vor die Hunde. " +
@@ -229,7 +229,7 @@ public enum DialogueType
     FoundAxt,
     NotFoundAxt,
     //ConfrontOne,
-    ConfrontTwo,
+    ConfrontBadGuy,
     // HouseChoicesTwo,
     Kill,
     Stromplan,
@@ -248,7 +248,7 @@ public enum ChoiceType
     LookAround,
     BackToCity,
     EWerk,
-    End2,
+    EndKillBadGuy,
     StayTalkBadGuy,
     ConfrontBadGuy
 }
@@ -275,7 +275,7 @@ public static class ChoiceParser
                 return "Umsehen";
             case ChoiceType.EWerk:
                 return "Zum E-Werk gehen";
-            case ChoiceType.End2:
+            case ChoiceType.EndKillBadGuy:
                 return "Typ mit Axt töten";
             case ChoiceType.StayTalkBadGuy:
                 return "Roter-Pulli-Typ suchen";
@@ -308,7 +308,7 @@ public static class ChoiceParser
                 return "05_Reaktor";
             case ChoiceType.EWerk:
                 return "06_E-Werk";
-            case ChoiceType.End2:
+            case ChoiceType.EndKillBadGuy:
                 return "09_Ende_2";
             case ChoiceType.ConfrontBadGuy:
                 return "NONE";

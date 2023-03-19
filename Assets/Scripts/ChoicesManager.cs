@@ -1,6 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 
 public class ChoicesManager : MonoBehaviour
@@ -20,8 +23,11 @@ public class ChoicesManager : MonoBehaviour
     private KeyCode _upKey = KeyCode.LeftArrow;
     private KeyCode _downKey = KeyCode.RightArrow;
     private KeyCode _enter = KeyCode.Return;
-    private int _selectedChoice = 0;
+    private int _selectedChoiceIndex = 0;
     private bool _choicesActive;
+    private bool _allowEventAfterDialogue = false;
+    private float _eventDelay;
+    private ChoiceType currentChoiceType;
 
     public static ChoicesManager Instance;
 
@@ -69,7 +75,7 @@ public class ChoicesManager : MonoBehaviour
         indicator3.SetActive(false);
         _choices = choices;
         int index = 0;
-        _selectedChoice = 0;
+        _selectedChoiceIndex = 0;
         foreach (var choice in _choices)
         {
             Debug.Log("choice:" + choice);
@@ -83,19 +89,45 @@ public class ChoicesManager : MonoBehaviour
         _choicesActive = true;
     }
 
+    void StartEndAfterConfront()
+    {
+        Debug.Log("load end level");
+        LevelManager.Instance.LoadScene("09_Ende_1");
+    }
+    
+    private IEnumerator ShowEvent(ChoiceType choice)
+    {
+        yield return new WaitForSeconds(_eventDelay);
+        Debug.Log("is in enumerator showEvent");
+        switch (_choices[_selectedChoiceIndex])
+        {
+            case ChoiceType.ConfrontBadGuy: 
+                Debug.Log("case confront");
+                StartEndAfterConfront(); 
+                break;
+        }
+    }
+
     void Update()
     {
+        if (!DialogueManager.Instance.getIsDialogueActive() & _allowEventAfterDialogue)
+        {
+            Debug.Log("dialog off, will invoke event");
+            _allowEventAfterDialogue = false;
+            StartCoroutine(ShowEvent(currentChoiceType));
+        }
+        
         if (_choicesActive)
         {
             if (Input.GetKeyDown(_downKey))
             {
-                if (_selectedChoice < _choices.Count)
+                if (_selectedChoiceIndex < _choices.Count)
                 {
-                    _selectedChoice += 1;
+                    _selectedChoiceIndex += 1;
                     int indicatorIndex = 0;
                     foreach (var indicaor in _indicators)
                     {
-                        if (indicatorIndex == _selectedChoice)
+                        if (indicatorIndex == _selectedChoiceIndex)
                         {
                             indicaor.SetActive(true);
                         }
@@ -109,13 +141,13 @@ public class ChoicesManager : MonoBehaviour
                 }
             } else if (Input.GetKeyDown(_upKey))
             {
-                if (_selectedChoice > 0)
+                if (_selectedChoiceIndex > 0)
                 {
-                    _selectedChoice -= 1;
+                    _selectedChoiceIndex -= 1;
                     int indicatorIndex = 0;
                     foreach (var indicaor in _indicators)
                     {
-                        if (indicatorIndex == _selectedChoice)
+                        if (indicatorIndex == _selectedChoiceIndex)
                         {
                             indicaor.SetActive(true);
                         }
@@ -129,13 +161,24 @@ public class ChoicesManager : MonoBehaviour
                 }
             } else if (Input.GetKeyDown(_enter))
             {
-                string nextScene = ChoiceParser.GetSceneForChoiceType(_choices[_selectedChoice]);
-                if (nextScene != null)
+                currentChoiceType = _choices[_selectedChoiceIndex];
+                string nextScene = ChoiceParser.GetSceneForChoiceType(_choices[_selectedChoiceIndex]);
+                if (nextScene == "NONE")
+                {
+                    switch (_choices[_selectedChoiceIndex])
+                    {
+                        case ChoiceType.ConfrontBadGuy:
+                            DialogueManager.Instance.setDialogueType(DialogueType.ConfrontBadGuy);
+                            DialogueManager.Instance.StartNewDialogue();
+                            _eventDelay = 1;
+                            _allowEventAfterDialogue = true;
+                            
+                            break;
+                    }
+                    
+                } else
                 {
                     LevelManager.Instance.LoadScene(nextScene);
-                } else if (nextScene == "NONE")
-                {
-                    
                 }
                 _choicesActive = false;
                 choicesPanel.SetActive(false);
