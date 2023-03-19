@@ -71,17 +71,23 @@ public static class DialogueParser
                 return dialogues;
             }
             case DialogueType.CityPeopleDialogue1:
-                dialogues.Add(new Dialogue("NPC", "Doom day, bitte was? Ach du redest nur Blödsinn!"));
+                dialogues.Add(new Dialogue("Andi", "Dooms day, bitte was? Ach du redest nur Blödsinn!"));
                 return dialogues;
             case DialogueType.CityPeopleDialogue2:
-                dialogues.Add(new Dialogue("NPC", "Hahaha ich lache mich schlapp. " +
+                dialogues.Add(new Dialogue("Jamie", "Hahaha ich lache mich schlapp. " +
                                                   "Komm, geh andere Leute nerven mit deiner Apokalypse!"));
                 return dialogues;
             case DialogueType.CityPeopleDialogue3:
-                dialogues.Add(new Dialogue("NPC", "Es ist so schon Kurz vor 12. Mach jemanden anderen Angst mit deinen Lügen!"));
+                dialogues.Add(new Dialogue("Jani", "Es ist so schon Kurz vor 12. Mach jemanden anderen Angst mit deinen Lügen!"));
                 return dialogues;
             case DialogueType.CityPeopleDialogue4:
-                dialogues.Add(new Dialogue("NPC", "Klimakrise, Atomkrieg, bla bla bla ... Ich kanns nicht mehr hören!"));
+                dialogues.Add(new Dialogue("Manu", "Klimakrise, Atomkrieg, bla bla bla ... Ich kanns nicht mehr hören!"));
+                return dialogues;
+            case DialogueType.CityPeopleDialogue5:
+                dialogues.Add(new Dialogue("Maxi", "Wem willst du hier Angst machen, du bist doch verrückt!"));
+                return dialogues;
+            case DialogueType.CityPeopleDialogue6:
+                dialogues.Add(new Dialogue("Fynn", "Ne danke, ich kaufe nichts."));
                 return dialogues;
             case DialogueType.CityPlayerResult:
                 dialogues.Add(new Dialogue("Ich",  "Das war wohl nichts. Kein Wunder, dass keiner mir glaubt. " +
@@ -122,10 +128,10 @@ public static class DialogueParser
                 dialogues.Add(new Dialogue("Ich", "Oh oh, ich glaube das 'Betreten verboten'-Schild hing nicht umsonst da."));
                 return dialogues;
             case DialogueType.Powerhouse:
-                dialogues.Add(new Dialogue("NPC", "Ach verdammt nochmal, sieh dir das an. Irgend so ein Typ" +
+                dialogues.Add(new Dialogue("Tim", "Ach verdammt nochmal, sieh dir das an. Irgend so ein Typ" +
                                                   " im roten Pulli hat hier alles zunichte gemacht und ist weggerannt. " +
                                                   "Erst kleben die sich auf die Autobahn und jetzt das!  Was für ein blödes Pack!"));
-                dialogues.Add(new Dialogue("NPC", "Verschwinde lieber, hier ist alles drauf und dran hochzugehen!"));
+                dialogues.Add(new Dialogue("TIm", "Verschwinde lieber, hier ist alles drauf und dran hochzugehen!"));
                 return dialogues;
             case DialogueType.City2BadGuy:
                 dialogues.Add(new Dialogue("Ich", "Hey du! Du warst am E-Werk und hast ... ähh ... wirst die Leitungen zum alten Reaktor kappen. Warum tust du das?"));
@@ -188,7 +194,7 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.Kill:
                 dialogues.Add(new Dialogue("Ich", "Geh zurück! Sonst... Du weißt nicht was du angerichtet hast ... " +
-                                                  "äh ... anrichten wirst! Du weißt nicht wie es ist,alleine auf dieser " +
+                                                  "äh ... anrichten wirst! Du weißt nicht wie es ist, alleine auf dieser " +
                                                   "gottverdammten Welt zu sein! Ahhhhh... *tötet Typ mit Axt*"));
                 return dialogues;
         }
@@ -209,6 +215,8 @@ public enum DialogueType
     CityPeopleDialogue2,
     CityPeopleDialogue3,
     CityPeopleDialogue4,
+    CityPeopleDialogue5,
+    CityPeopleDialogue6,
     CityPlayerResult,
     RiverIntro,
     ControlRoomIntro,
