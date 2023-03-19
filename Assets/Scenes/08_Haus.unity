@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 24
+  dialogueType: 26
   interactAction:
     m_PersistentCalls:
       m_Calls:
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 19
+  dialogueType: 21
   interactAction:
     m_PersistentCalls:
       m_Calls:
@@ -2444,7 +2444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 18
+  dialogueType: 20
   interactAction:
     m_PersistentCalls:
       m_Calls: []
@@ -4588,7 +4588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 23
+  dialogueType: 25
   interactAction:
     m_PersistentCalls:
       m_Calls:

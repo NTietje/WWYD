@@ -14732,7 +14732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 16
+  dialogueType: 18
   interactAction:
     m_PersistentCalls:
       m_Calls:

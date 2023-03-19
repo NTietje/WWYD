@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  dialogueType: 17
+  dialogueType: 19
   interactAction:
     m_PersistentCalls:
       m_Calls:
@@ -3881,7 +3881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 2
-  dialogueType: 25
+  dialogueType: 27
   sceneCall: {fileID: 0}
 --- !u!1 &2132217414
 GameObject:

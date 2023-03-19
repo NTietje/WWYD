@@ -764,7 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 2
-  dialogueType: 12
+  dialogueType: 14
   sceneCall: {fileID: 0}
 --- !u!1 &376184515 stripped
 GameObject:
