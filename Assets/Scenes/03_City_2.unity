@@ -1111,7 +1111,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 89004533771258739, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_text
-      value: Zm alten reaktor gehen
+      value: Zm alten Reaktor gehen
       objectReference: {fileID: 0}
     - target: {fileID: 207739934501677954, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_text
