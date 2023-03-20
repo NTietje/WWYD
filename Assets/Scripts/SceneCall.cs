@@ -10,7 +10,6 @@ public class SceneCall : MonoBehaviour
     [SerializeField] private int delay;
     [SerializeField] private Animator animator;
     [SerializeField] private Animator animator2 = null;
-    // private static readonly int Enable = Animator.StringToHash("enable");
 
     public void StartScene()
     {
@@ -33,10 +32,15 @@ public class SceneCall : MonoBehaviour
         {
             animator2.SetBool("enable", true);
         }
-        Debug.Log("waiting");
-        yield return new WaitForSeconds(delay);
-        Debug.Log("start next scene");
-        LevelManager.Instance.LoadScene(sceneName);
+        
+        if (sceneName != null)
+        {
+            Debug.Log("waiting");
+            yield return new WaitForSeconds(delay);
+            Debug.Log("start next scene");
+            LevelManager.Instance.LoadScene(sceneName); 
+        }
+        
     }
 
 }
