@@ -7,16 +7,17 @@ public class ClockCounter : MonoBehaviour
     [SerializeField] private Text clockText;
     [SerializeField] private int timeHours = 0;
     [SerializeField] private int timeMinutes = 0;
+    [SerializeField] private int timeSeconds = 0;
     private float time = 0;
 
     private void Start()
     {
-        String text = string.Format("{0:00}:{1:00}:{2:00}", timeHours, timeMinutes, 0);
+        String text = string.Format("{0:00}:{1:00}:{2:00}", timeHours, timeMinutes, timeSeconds);
         clockText.text = text;
 
         time = timeHours * 60 * 60;
         time += timeMinutes * 60;
-        
+        time += timeSeconds;
     }
 
     void Update()
