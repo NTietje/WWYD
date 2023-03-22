@@ -1956,6 +1956,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: dialogueType
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 2092959480080780133, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
       propertyPath: m_Name
       value: Interactable
