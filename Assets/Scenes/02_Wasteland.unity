@@ -2769,6 +2769,7 @@ GameObject:
   - component: {fileID: 404914334}
   - component: {fileID: 404914333}
   - component: {fileID: 404914332}
+  - component: {fileID: 404914336}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -2855,6 +2856,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &404914336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404914331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b4e7298073df140843e52901e59175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &409061377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18319,7 +18332,7 @@ PrefabInstance:
     - target: {fileID: 1317582516, guid: 7983e9cd69e2bb247a801e87466c1ae9, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 1076385180}
+      objectReference: {fileID: 0}
     - target: {fileID: 7477705901768894522, guid: 7983e9cd69e2bb247a801e87466c1ae9, type: 3}
       propertyPath: m_Name
       value: SphereGemLarge
