@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public enum InteractionType
 {
-    OnlyInteract,
+    StartDialogueOnTrigger,
     StartDialogue
 }
 
@@ -26,6 +26,7 @@ public class Interactable : MonoBehaviour
     private bool _inRange;
     private bool allowEventAfterDialogue;
     private KeyCode _interactKey = KeyCode.E;
+    private bool triggerDialogueWasFired = false;
 
     // Update is called once per frame
     void Update()
@@ -37,9 +38,7 @@ public class Interactable : MonoBehaviour
                 Debug.Log("Interaction was called");
                 if (interactionType == InteractionType.StartDialogue)
                 {
-                    Debug.Log("will start dialog");
-                    DialogueManager.Instance.setDialogueType(dialogueType);
-                    DialogueManager.Instance.StartNewDialogue();
+                    StartDialogue();
                     allowCounting = true;
                     if (startEventAfterDialogue)
                     {
@@ -67,6 +66,13 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    private void StartDialogue()
+    {
+        Debug.Log("will start dialog");
+        DialogueManager.Instance.setDialogueType(dialogueType);
+        DialogueManager.Instance.StartNewDialogue();
+    }
+
     private IEnumerator ShowEvent()
     {
         yield return new WaitForSeconds(eventDelay);
@@ -75,19 +81,27 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") | collision.gameObject.CompareTag("BadGuy"))
         {
-            Debug.Log("Player is in range");
-            _inRange = true;
-            DialogueManager.Instance.ShowInteractPanel();
+            Debug.Log("Player or Enemy is in range");
+            if (interactionType == InteractionType.StartDialogueOnTrigger & !triggerDialogueWasFired)
+            {
+                StartDialogue();
+                triggerDialogueWasFired = true;
+            }
+            else
+            {
+                _inRange = true;
+                DialogueManager.Instance.ShowInteractPanel(); 
+            }
         }
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") | collision.gameObject.CompareTag("BadGuy"))
         {
-            Debug.Log("Player is out of range");
+            Debug.Log("Player or Enemy is out of range");
             _inRange = false;
             DialogueManager.Instance.HideInteractPanel();
         }
