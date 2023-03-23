@@ -10,11 +10,34 @@ public enum InteractionType
     StartDialogue
 }
 
+public enum PersonTag
+{
+    Player,
+    BadGuy
+}
+
+static class PersonTagMethods
+{
+    public static String GetTagString(this PersonTag tag)
+    {
+        switch (tag)
+        {
+            case PersonTag.Player:
+                return "Player";
+            case PersonTag.BadGuy:
+                return "BadGuy";
+            default:
+                return "";
+        }
+    }
+}
+
 public class Interactable : MonoBehaviour
 {
     [Header("Interactable Settings")]
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private DialogueType dialogueType;
+    [SerializeField] private PersonTag interactPerson = PersonTag.Player;
     [Header("Start Events after Interaction")]
     [SerializeField] private UnityEvent interactAction = null;
     [SerializeField] private bool startEventAfterDialogue = false;
@@ -28,6 +51,11 @@ public class Interactable : MonoBehaviour
     private KeyCode _interactKey = KeyCode.E;
     private bool triggerDialogueWasFired = false;
 
+    public void clearActions()
+    {
+        interactAction = null;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,12 +66,8 @@ public class Interactable : MonoBehaviour
                 Debug.Log("Interaction was called");
                 if (interactionType == InteractionType.StartDialogue)
                 {
-                    StartDialogue();
+                    StartDialogue(dialogueType);
                     allowCounting = true;
-                    if (startEventAfterDialogue)
-                    {
-                        allowEventAfterDialogue = true; 
-                    }
                 }
                 if (!startEventAfterDialogue & interactAction != null)
                 {
@@ -58,19 +82,25 @@ public class Interactable : MonoBehaviour
             allowCounting = false;
             GameStoryManager.Instance.CountUpPeopleTalkedTo(objectID.ToString());
         }
+        
         if (interactAction != null & startEventAfterDialogue &
             !DialogueManager.Instance.getIsDialogueActive() & allowEventAfterDialogue)
         {
+            Debug.Log("dialog ended");
             allowEventAfterDialogue = false;
             StartCoroutine(ShowEvent());
         }
     }
 
-    private void StartDialogue()
+    public void StartDialogue(DialogueType type)
     {
         Debug.Log("will start dialog");
-        DialogueManager.Instance.setDialogueType(dialogueType);
+        DialogueManager.Instance.setDialogueType(type);
         DialogueManager.Instance.StartNewDialogue();
+        if (startEventAfterDialogue)
+        {
+            allowEventAfterDialogue = true; 
+        }
     }
 
     private IEnumerator ShowEvent()
@@ -81,12 +111,13 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player") | collision.gameObject.CompareTag("BadGuy"))
+        
+        if (collision.gameObject.CompareTag(interactPerson.GetTagString()))
         {
-            Debug.Log("Player or Enemy is in range");
+            Debug.Log(interactPerson.GetTagString() + "is in range");
             if (interactionType == InteractionType.StartDialogueOnTrigger & !triggerDialogueWasFired)
             {
-                StartDialogue();
+                StartDialogue(dialogueType);
                 triggerDialogueWasFired = true;
             }
             else
@@ -99,9 +130,9 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player") | collision.gameObject.CompareTag("BadGuy"))
+        if (collision.gameObject.CompareTag(interactPerson.GetTagString()))
         {
-            Debug.Log("Player or Enemy is out of range");
+            Debug.Log(interactPerson.GetTagString() + "is out of range");
             _inRange = false;
             DialogueManager.Instance.HideInteractPanel();
         }

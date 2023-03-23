@@ -40,10 +40,12 @@ public class LevelManager : MonoBehaviour
         loadingPanel.SetActive(false);
     }
 
-    public async void LoadScene(string sceneName)
+    public async void LoadScene(string sceneName, int delayMilliSec = 1000)
     {
         if (sceneName != null & sceneName != "")
         {
+            await Task.Delay(delayMilliSec);
+            
             _loadProgressActive = true;
             progressBar.value = 0;
             _target = 0;

@@ -31,6 +31,11 @@ public class ChoicesManager : MonoBehaviour
 
     public static ChoicesManager Instance;
 
+    public ChoiceType GetCurrentChoiceType()
+    {
+        return currentChoiceType;
+    }
+
     public bool getIsActive()
     {
         return _choicesActive;
@@ -89,33 +94,33 @@ public class ChoicesManager : MonoBehaviour
         _choicesActive = true;
     }
 
-    void StartEndAfterConfront()
-    {
-        Debug.Log("load end level");
-        LevelManager.Instance.LoadScene("09_Ende_1");
-    }
+    // void StartEndAfterConfront()
+    // {
+    //     Debug.Log("load end level");
+    //     LevelManager.Instance.LoadScene("09_Ende_1");
+    // }
     
-    private IEnumerator ShowEvent(ChoiceType choice)
-    {
-        yield return new WaitForSeconds(_eventDelay);
-        Debug.Log("is in enumerator showEvent");
-        switch (_choices[_selectedChoiceIndex])
-        {
-            case ChoiceType.ConfrontBadGuy: 
-                Debug.Log("case confront");
-                StartEndAfterConfront(); 
-                break;
-        }
-    }
+    // private IEnumerator ShowEvent(ChoiceType choice)
+    // {
+    //     yield return new WaitForSeconds(_eventDelay);
+    //     Debug.Log("is in enumerator showEvent");
+    //     switch (_choices[_selectedChoiceIndex])
+    //     {
+    //         case ChoiceType.ConfrontBadGuy: 
+    //             Debug.Log("case confront");
+    //             StartEndAfterConfront(); 
+    //             break;
+    //     }
+    // }
 
     void Update()
     {
-        if (!DialogueManager.Instance.getIsDialogueActive() & _allowEventAfterDialogue)
-        {
-            Debug.Log("dialog off, will invoke event");
-            _allowEventAfterDialogue = false;
-            StartCoroutine(ShowEvent(currentChoiceType));
-        }
+        // if (!DialogueManager.Instance.getIsDialogueActive() & _allowEventAfterDialogue)
+        // {
+        //     Debug.Log("dialog off, will invoke event");
+        //     _allowEventAfterDialogue = false;
+        //     StartCoroutine(ShowEvent(currentChoiceType));
+        // }
         
         if (_choicesActive)
         {

@@ -5,9 +5,7 @@ using UnityEngine;
 public class GameStoryManager : MonoBehaviour
 {
     public static GameStoryManager Instance;
-    
-    [SerializeField] private GameObject badGuy;
-    
+
     private int peopleTalkedCount = 0;
     private List<string> spokenPeopleIDs;
     private bool playerHasAxe = false;

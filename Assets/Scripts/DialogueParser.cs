@@ -81,7 +81,7 @@ public static class DialogueParser
                 dialogues.Add(new Dialogue("Jani", "Es ist so schon Kurz vor 12. Mach jemanden anderen Angst mit deinen Lügen!"));
                 return dialogues;
             case DialogueType.CityPeopleDialogue4:
-                dialogues.Add(new Dialogue("Manu", "Klimakrise, Atomkrieg, bla bla bla ... Ich kanns nicht mehr hören!"));
+                dialogues.Add(new Dialogue("Manu", "Klimakrise, Atomkrieg, bla bla bla... Ich kanns nicht mehr hören!"));
                 return dialogues;
             case DialogueType.CityPeopleDialogue5:
                 dialogues.Add(new Dialogue("Maxi", "Wem willst du hier Angst machen, du bist doch verrückt!"));
@@ -134,8 +134,8 @@ public static class DialogueParser
                 dialogues.Add(new Dialogue("TIm", "Verschwinde lieber, hier ist alles drauf und dran hochzugehen!"));
                 return dialogues;
             case DialogueType.City2BadGuy:
-                dialogues.Add(new Dialogue("Ich", "Hey du! Du warst am E-Werk und hast ... ähh ... wirst die Leitungen zum alten Reaktor kappen. Warum tust du das?"));
-                dialogues.Add(new Dialogue("Guy", "Ähh, nein was redest du da? Was werde ich tun ... oder getan haben werden?! Du bist doch verrückt! *rennt weg*"));
+                dialogues.Add(new Dialogue("Ich", "Hey du! Du warst am E-Werk und hast... ähh... wirst die Leitungen zum alten Reaktor kappen. Warum tust du das?"));
+                dialogues.Add(new Dialogue("Guy", "Ähh, nein was redest du da? Was werde ich tun... oder getan haben werden?! Du bist doch verrückt! *rennt weg*"));
                 dialogues.Add(new Dialogue("Ich", "Schon seeehr sus! Wenn er nichts zu verbergen hat, wieso läuft er dann von mir weg? Ich sollte ihm folgen..."));
                 
                 return dialogues;
@@ -157,12 +157,10 @@ public static class DialogueParser
                                                "'Verletzte und Tote nach Klimademo-Ausschreitungen'"));
                 dialogues.Add(new Dialogue("Ich", "Hier ist ein Frauenname einer Toten eingekreist, ob sie ihm wohl nahe stand? " +
                                                     "Das würde zumindest ein Motiv ergeben... "));
-
                 return dialogues;
             case DialogueType.Stromplan:
                 dialogues.Add(new Dialogue("Ich", "Das sind doch die Strompläne zum E-Werk! Also scheint er doch der Verantwortliche zu sein. " +
                                                     "Wie ist er bloß da rangekommen?! Das Ganze kann er doch wohl nicht alleine geplant haben..."));
-                
                 return dialogues;
             case DialogueType.FoundAxt:
                 dialogues.Add(new Dialogue("Ich", "Das ist wohl die Tatwaffe. Ich sollte sie " +
@@ -171,30 +169,18 @@ public static class DialogueParser
             case DialogueType.NotFoundAxt:
                 dialogues.Add(new Dialogue("Guy", "Du schon wieder! Was zur Hölle tust du in meinem Haus?! " +
                                                   "Verschwinde! Sofort! Sonst kannst du was erleben..."));
-                /* return dialogues;
-            case DialogueType.ConfrontOne:
-                dialogues.Add(new Dialogue("BadGuy", "Du schon wieder! Was zur Hölle tust du in meinem Haus?! " +
-                                                     "Du weißt schon viel zu viel! *greift zur Axt und tötet dich*")); */
-            /*     return dialogues;
-            case DialogueType.HouseChoicesTwo:
-            {
-                List<ChoiceType> choices = new List<ChoiceType>
-                {
-                    ChoiceType.LookAround
-                };
-                dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
-                return dialogues;
-            } */
                 return dialogues;
             case DialogueType.ConfrontBadGuy:
-                dialogues.Add(new Dialogue("Ich", "Sag schon! Warum willst du ... ähh ... wolltest du die Welt zerstören?!"));
+                dialogues.Add(new Dialogue("Ich", "Sag schon! Warum willst du... ähh... wolltest du die Welt zerstören?!"));
                 dialogues.Add(new Dialogue("Guy", "Ach wenn nicht jetzt, dann in einem Jahr oder zwei oder " +
-                                                  "5. spielt das eine Rolle?! Die Welt geht so oder so vor die Hunde. " +
-                                                  "Ich wollte uns allen einen gefallen tun ... vor allem IHR ... *läuft in Tränen davon*"));
+                                                  "5. spielt das eine Rolle?! Die Welt geht so oder so vor die Hunde. Ich wollte uns allen einen gefallen tun..."));
+                return dialogues;
+            case DialogueType.ConfrontBadGuyRun:
+                dialogues.Add(new Dialogue("Guy", "Vor allem IHR... *läuft in Tränen davon*"));
                 return dialogues;
             case DialogueType.Kill:
-                dialogues.Add(new Dialogue("Ich", "Geh zurück! Sonst... Du weißt nicht was du angerichtet hast ... " +
-                                                  "äh ... anrichten wirst! Du weißt nicht wie es ist, alleine auf dieser " +
+                dialogues.Add(new Dialogue("Ich", "Geh zurück! Sonst... Du weißt nicht was du angerichtet hast... " +
+                                                  "äh... anrichten wirst! Du weißt nicht wie es ist, alleine auf dieser " +
                                                   "gottverdammten Welt zu sein! Ahhhhh... *tötet Typ mit Axt*"));
                 return dialogues;
         }
@@ -234,8 +220,8 @@ public enum DialogueType
     Kill,
     Stromplan,
     Zeitung,
-    CityChoices2
-
+    CityChoices2,
+    ConfrontBadGuyRun
 }
 
 public enum ChoiceType
