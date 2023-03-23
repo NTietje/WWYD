@@ -27,39 +27,33 @@ public class GameStoryManager : MonoBehaviour
         spokenPeopleIDs = new List<string>();
     }
 
-    private void CheckAllEvidenceFound()
+    public bool CheckAllEvidenceFound()
     {
         if (playerHasAxe && newspaperFound && powerPlanFound)
         {
-            startBadGuyInHouseAnimation();
+            Debug.Log("all evidence found");
+            return true;
         }
-    }
 
-    private void startBadGuyInHouseAnimation()
-    {
-        Debug.Log("will start bad guy in house animation");
+        return false;
     }
 
     public void AxeWasFound()
     {
         playerHasAxe = true;
         Debug.Log("playerHasAxe true");
-        CheckAllEvidenceFound();
     } 
     
     public void PaperWereFound()
     {
         newspaperFound = true;
         Debug.Log("newspaperFound true");
-        CheckAllEvidenceFound();
-
     } 
     
     public void PowerPlanWasFound()
     {
         powerPlanFound = true;
         Debug.Log("powerPlanFound true");
-        CheckAllEvidenceFound();
     } 
 
     public void CountUpPeopleTalkedTo(string objectID)
