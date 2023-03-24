@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 505654392}
   - component: {fileID: 505654391}
   - component: {fileID: 505654390}
+  - component: {fileID: 505654394}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1018,6 +1019,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505654394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505654389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b4e7298073df140843e52901e59175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &555104427 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1502877291743220047, guid: ad9a57415a7bc224a99c726e561f9487, type: 3}
@@ -1943,6 +1956,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: dialogueType
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 2092959480080780133, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
       propertyPath: m_Name
       value: Interactable
