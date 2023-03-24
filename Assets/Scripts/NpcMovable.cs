@@ -61,7 +61,7 @@ public class NpcMovable : MonoBehaviour
     
     public void RunTo(GameObject destinationObject)
     {
-        meshAgent.speed = 8.5f;
+        meshAgent.speed = 9f;
         destination = destinationObject;
         setAnimationBool(runningAnimationBool);
         enableMove = true;

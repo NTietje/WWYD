@@ -135,9 +135,10 @@ public static class DialogueParser
                 return dialogues;
             case DialogueType.City2BadGuy:
                 dialogues.Add(new Dialogue("Ich", "Hey du! Du warst am E-Werk und hast... ähh... wirst die Leitungen zum alten Reaktor kappen. Warum tust du das?"));
-                dialogues.Add(new Dialogue("Guy", "Ähh, nein was redest du da? Was werde ich tun... oder getan haben werden?! Du bist doch verrückt! *rennt weg*"));
-                dialogues.Add(new Dialogue("Ich", "Schon seeehr sus! Wenn er nichts zu verbergen hat, wieso läuft er dann von mir weg? Ich sollte ihm folgen..."));
-                
+                dialogues.Add(new Dialogue("Guy", "Ähh, nein was redest du da? Was werde ich tun... oder getan haben werden?! Du bist doch verrückt!"));
+                return dialogues;
+            case DialogueType.City2BadGuyAfterRun:
+                dialogues.Add(new Dialogue("Ich", "Schon seeehr sus! Wenn er nichts zu verbergen hat, wieso läuft er dann weg? Ich sollte ihm folgen..."));
                 return dialogues;
             case DialogueType.HouseChoicesOne:
             {
@@ -148,7 +149,6 @@ public static class DialogueParser
                     ChoiceType.EndKillBadGuy,
                     ChoiceType.ConfrontBadGuy
                 };
-
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
             }
@@ -221,7 +221,8 @@ public enum DialogueType
     Stromplan,
     Zeitung,
     CityChoices2,
-    ConfrontBadGuyRun
+    ConfrontBadGuyRun,
+    City2BadGuyAfterRun
 }
 
 public enum ChoiceType
