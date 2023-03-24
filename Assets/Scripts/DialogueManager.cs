@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     private bool _dialogueIsTyping;
     private bool _dialogueFinished;
     private bool _dialogueIsActive;
+    private bool _allowDialogInteraction = false;
     private int _dialogueIndex;
 
     private void Awake()
@@ -59,7 +60,7 @@ public class DialogueManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(_continueKey) & _dialogueIsActive & !_dialogueIsTyping)
+        if (Input.GetKeyDown(_continueKey) & _dialogueIsActive & !_dialogueIsTyping && _allowDialogInteraction)
         {
             if (!_dialogueFinished)
             {
@@ -100,18 +101,19 @@ public class DialogueManager : MonoBehaviour
     
     public void StartNewDialogue()
     {
-        Debug.Log("Start new dialogue");
+        Debug.Log("Start new dialogue: " + _dialogueType);
         canvas.gameObject.SetActive(true);
+        _dialogueIsTyping = false;
         _dialogueIndex = 0;
         _dialogues = DialogueParser.GetDialoguesForType(_dialogueType);
         _dialogueIsActive = true;
         _dialogueFinished = false;
         dialoguePanel.SetActive(true);
-        
         interactPanel.SetActive(false);
         
         ContinueDialogue();
-        
+        _allowDialogInteraction = true;
+
         // if (gameStory.canContinue)
         // {
         //     dialogueText.text = gameStory.Continue();
@@ -127,6 +129,11 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("dialogues count: " + _dialogues.Count);
         Debug.Log("dialogues index: " + _dialogueIndex);
         Debug.Log("dialogue is NOT typing: " + !_dialogueIsTyping);
+        bool iff = _dialogues.Count > 0 & _dialogueIndex < _dialogues.Count & !_dialogueIsTyping;
+        Debug.Log("will go in if: " + iff);
+        Debug.Log("first: " + (_dialogues.Count > 0));
+        Debug.Log("second: " + (_dialogueIndex < _dialogues.Count));
+        Debug.Log("third: " + (!_dialogueIsTyping));
         if (_dialogues.Count > 0 & _dialogueIndex < _dialogues.Count & !_dialogueIsTyping)
         {
             Debug.Log("continue dialogue");
@@ -161,6 +168,7 @@ public class DialogueManager : MonoBehaviour
 
     private void CloseDialogue()
     {
+        _allowDialogInteraction = false;
         Debug.Log("CLOSE dialogue");
         _dialogueFinished = true;
         _dialogues = null;

@@ -94,7 +94,7 @@ public class Interactable : MonoBehaviour
 
     public void StartDialogue(DialogueType type)
     {
-        Debug.Log("will start dialog");
+        Debug.Log("will start dialog: " + type.ToString());
         DialogueManager.Instance.setDialogueType(type);
         DialogueManager.Instance.StartNewDialogue();
         if (startEventAfterDialogue)

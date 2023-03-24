@@ -30,6 +30,7 @@ public class HouseAnimationManager : MonoBehaviour
     {
         if (!DialogueManager.Instance.getIsDialogueActive() & allowEventAfterDialogue)
         {
+            allowEventAfterDialogue = false;
             StartEndSceneAfterConfrontation();
         }
     }
@@ -53,7 +54,7 @@ public class HouseAnimationManager : MonoBehaviour
 
     public void StartEndSceneAfterConfrontation()
     {
-        Debug.Log("load end level");
+        Debug.Log("load end level in HouseAnimationManager");
         LevelManager.Instance.LoadScene("09_Ende_1");
     }
 

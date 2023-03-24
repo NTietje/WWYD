@@ -13,6 +13,7 @@ public class SceneCall : MonoBehaviour
 
     public void StartScene()
     {
+        Debug.Log("load scene in StartScene");
         LevelManager.Instance.LoadScene(sceneName);
     }
 

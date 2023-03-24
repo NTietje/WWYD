@@ -91,6 +91,12 @@ public class ChoicesManager : MonoBehaviour
         }
         playerController.ActivatePlayerMovement(false);
         choicesPanel.SetActive(true);
+        StartCoroutine(enableChoiceControls());
+    }
+    
+    private IEnumerator enableChoiceControls()
+    {
+        yield return new WaitForSeconds(0.1f); // delay to not fire the choice immediately
         _choicesActive = true;
     }
 
@@ -129,6 +135,8 @@ public class ChoicesManager : MonoBehaviour
                 if (_selectedChoiceIndex < _choices.Count)
                 {
                     _selectedChoiceIndex += 1;
+                    Debug.Log("selected choice index: " + _selectedChoiceIndex);
+                    Debug.Log("choice would be: " + _choices[_selectedChoiceIndex].ToString());
                     int indicatorIndex = 0;
                     foreach (var indicaor in _indicators)
                     {
@@ -149,6 +157,8 @@ public class ChoicesManager : MonoBehaviour
                 if (_selectedChoiceIndex > 0)
                 {
                     _selectedChoiceIndex -= 1;
+                    Debug.Log("selected choice index: " + _selectedChoiceIndex);
+                    Debug.Log("choice would be: " + _choices[_selectedChoiceIndex].ToString());
                     int indicatorIndex = 0;
                     foreach (var indicaor in _indicators)
                     {
@@ -166,7 +176,9 @@ public class ChoicesManager : MonoBehaviour
                 }
             } else if (Input.GetKeyDown(_enter))
             {
+                Debug.Log("it is key down");
                 currentChoiceType = _choices[_selectedChoiceIndex];
+                Debug.Log("choice is: " + _choices[_selectedChoiceIndex].ToString());
                 string nextScene = ChoiceParser.GetSceneForChoiceType(_choices[_selectedChoiceIndex]);
                 if (nextScene == "NONE")
                 {
@@ -183,6 +195,7 @@ public class ChoicesManager : MonoBehaviour
                     
                 } else
                 {
+                    Debug.Log("will load scene in ChoiceManager");
                     LevelManager.Instance.LoadScene(nextScene);
                 }
                 _choicesActive = false;
