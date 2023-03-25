@@ -263,11 +263,11 @@ public static class ChoiceParser
             case ChoiceType.EWerk:
                 return "Zum E-Werk gehen";
             case ChoiceType.EndKillBadGuy:
-                return "Typ mit Axt töten";
+                return "Mit der Axt zuschlagen";
             case ChoiceType.StayTalkBadGuy:
-                return "Roter-Pulli-Typ suchen";
+                return "Person mit rotem Pulli suchen";
             case ChoiceType.ConfrontBadGuy:
-                return "Typ zur Rede stellen";
+                return "Zur Rede stellen";
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }

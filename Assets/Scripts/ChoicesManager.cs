@@ -26,8 +26,8 @@ public class ChoicesManager : MonoBehaviour
     private int _selectedChoiceIndex = 0;
     private bool _choicesActive;
     private bool _allowEventAfterDialogue = false;
-    private float _eventDelay;
     private ChoiceType currentChoiceType;
+    private bool _allowRunToStart = false;
 
     public static ChoicesManager Instance;
 
@@ -39,6 +39,11 @@ public class ChoicesManager : MonoBehaviour
     public bool getIsActive()
     {
         return _choicesActive;
+    }
+
+    public bool GetAllowRun()
+    {
+        return _allowRunToStart;
     }
     private void Awake()
     {
@@ -96,7 +101,7 @@ public class ChoicesManager : MonoBehaviour
     
     private IEnumerator enableChoiceControls()
     {
-        yield return new WaitForSeconds(0.1f); // delay to not fire the choice immediately
+        yield return new WaitForSeconds(0.01f); // delay to not fire the choice immediately
         _choicesActive = true;
     }
 
@@ -121,12 +126,15 @@ public class ChoicesManager : MonoBehaviour
 
     void Update()
     {
-        // if (!DialogueManager.Instance.getIsDialogueActive() & _allowEventAfterDialogue)
-        // {
-        //     Debug.Log("dialog off, will invoke event");
-        //     _allowEventAfterDialogue = false;
-        //     StartCoroutine(ShowEvent(currentChoiceType));
-        // }
+        if (_allowEventAfterDialogue & !DialogueManager.Instance.getIsDialogueActive())
+        {
+            // Debug.Log("dialog off, will invoke event");
+            _allowEventAfterDialogue = false;
+            DialogueManager.Instance.setDialogueType(DialogueType.ConfrontBadGuyRun);
+            DialogueManager.Instance.StartNewDialogue();
+            Debug.Log("set allow run to true");
+            _allowRunToStart = true;
+        }
         
         if (_choicesActive)
         {
@@ -187,9 +195,7 @@ public class ChoicesManager : MonoBehaviour
                         case ChoiceType.ConfrontBadGuy:
                             DialogueManager.Instance.setDialogueType(DialogueType.ConfrontBadGuy);
                             DialogueManager.Instance.StartNewDialogue();
-                            _eventDelay = 1;
                             _allowEventAfterDialogue = true;
-                            
                             break;
                     }
                     

@@ -102,6 +102,16 @@ public class Interactable : MonoBehaviour
             allowEventAfterDialogue = true; 
         }
     }
+    
+    public void StartDialogue()
+    {
+        DialogueManager.Instance.setDialogueType(dialogueType);
+        DialogueManager.Instance.StartNewDialogue();
+        if (startEventAfterDialogue)
+        {
+            allowEventAfterDialogue = true; 
+        }
+    }
 
     private IEnumerator ShowEvent()
     {

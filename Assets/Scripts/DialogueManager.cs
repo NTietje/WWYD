@@ -64,7 +64,6 @@ public class DialogueManager : MonoBehaviour
         {
             if (!_dialogueFinished)
             {
-                Debug.Log("CONTINUE dialogue");
                 ContinueDialogue();
             }
         }
@@ -72,14 +71,12 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowInteractPanel()
     {
-        Debug.Log("Show interact panel");
         canvas.gameObject.SetActive(true);
         interactPanel.SetActive(true);
     }
     
     public void HideInteractPanel()
     {
-        Debug.Log("Hide interact panel");
         interactPanel.SetActive(false);
     }
     
@@ -96,12 +93,11 @@ public class DialogueManager : MonoBehaviour
     public void setDialogueType(DialogueType type)
     {
         _dialogueType = type;
-        Debug.Log("Set dialogue type to: " + type);
     }
     
     public void StartNewDialogue()
     {
-        Debug.Log("Start new dialogue: " + _dialogueType);
+        Debug.Log("start new dialogue: "+ _dialogueType.ToString());
         canvas.gameObject.SetActive(true);
         _dialogueIsTyping = false;
         _dialogueIndex = 0;
@@ -122,23 +118,12 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
-        Debug.Log("Try continue dialogue");
         dialogueText.text = "";
         dialogueSubtext.text = "";
 
-        Debug.Log("dialogues count: " + _dialogues.Count);
-        Debug.Log("dialogues index: " + _dialogueIndex);
-        Debug.Log("dialogue is NOT typing: " + !_dialogueIsTyping);
-        bool iff = _dialogues.Count > 0 & _dialogueIndex < _dialogues.Count & !_dialogueIsTyping;
-        Debug.Log("will go in if: " + iff);
-        Debug.Log("first: " + (_dialogues.Count > 0));
-        Debug.Log("second: " + (_dialogueIndex < _dialogues.Count));
-        Debug.Log("third: " + (!_dialogueIsTyping));
         if (_dialogues.Count > 0 & _dialogueIndex < _dialogues.Count & !_dialogueIsTyping)
         {
-            Debug.Log("continue dialogue");
             dialogueSpeaker.text = _dialogues[_dialogueIndex].Speaker;
-            // dialogueText.text = dialogues[dialogueIndex].text;
             StartCoroutine(DisplayLine(_dialogues[_dialogueIndex].Text));
             dialogueText.gameObject.SetActive(true);
             
@@ -148,15 +133,12 @@ public class DialogueManager : MonoBehaviour
             }
             if (_dialogues[_dialogueIndex].Choices != null)
             {
-                Debug.Log("choices found");
-                Debug.Log("choices count: "+ _dialogues[_dialogueIndex].Choices.Count);
                 ChoicesManager.Instance.StartChoices(_dialogues[_dialogueIndex].Choices);
             }
             else
             {
                 Debug.Log("no choices");
             }
-
             _dialogueIndex++;
         }
         else
@@ -168,13 +150,12 @@ public class DialogueManager : MonoBehaviour
 
     private void CloseDialogue()
     {
+        _dialogueIsActive = false;
         _allowDialogInteraction = false;
-        Debug.Log("CLOSE dialogue");
         _dialogueFinished = true;
         _dialogues = null;
         dialogueText.gameObject.SetActive(false);
         dialogueSubtext.gameObject.SetActive(false);
-        _dialogueIsActive = false;
         dialoguePanel.SetActive(false);
     }
 

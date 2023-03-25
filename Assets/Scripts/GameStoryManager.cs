@@ -56,6 +56,7 @@ public class GameStoryManager : MonoBehaviour
 
     public void CountUpPeopleTalkedTo(string objectID)
     {
+        Debug.Log("people spoken to count: " + peopleTalkedCount);
         if (!spokenPeopleIDs.Contains(objectID))
         {
             spokenPeopleIDs.Add(objectID);

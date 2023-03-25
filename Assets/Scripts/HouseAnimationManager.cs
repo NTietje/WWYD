@@ -15,21 +15,24 @@ public class HouseAnimationManager : MonoBehaviour
     [SerializeField] private Interactable firstDestinationInteractable;
     [SerializeField] private ChoicesManager choicesManager;
     [SerializeField] private GameObject badGuy;
+    
+    public static HouseAnimationManager Instance { get; private set; }
    
     private bool allowEventAfterDialogue = false;
-    // private void Start()
-    // {
-    //     if (npcMovable != null & destinationInHouse != null)
-    //     {
-    //         Debug.Log("start walk to");
-    //         npcMovable.WalkTo(destinationInHouse);
-    //     }
-    // }
-    
+    private bool runWasStart = false;
+
     void Update()
     {
-        if (!DialogueManager.Instance.getIsDialogueActive() & allowEventAfterDialogue)
+        if (choicesManager.GetAllowRun() & !runWasStart)
         {
+            runWasStart = true;
+            Debug.Log("is allowed to run");
+            RunForestRunOutOfHouse();
+        }
+        if (allowEventAfterDialogue & !DialogueManager.Instance.getIsDialogueActive() &
+            (DialogueManager.Instance.getDialogueType() == DialogueType.ConfrontBadGuyRun))
+        {
+            Debug.Log("will start end scene load after run");
             allowEventAfterDialogue = false;
             StartEndSceneAfterConfrontation();
         }
@@ -43,13 +46,13 @@ public class HouseAnimationManager : MonoBehaviour
         }
     }
 
-    public void RunForestRunOutOfHouse()
+    private void RunForestRunOutOfHouse()
     {
-        Debug.Log("run forest run");
-        if (choicesManager.GetCurrentChoiceType() == ChoiceType.ConfrontBadGuy)
-        {
-            StartCoroutine(StartAnimationProcess2());
-        }
+        // if (choicesManager.GetCurrentChoiceType() == ChoiceType.ConfrontBadGuy)
+        // {
+        Debug.Log("run forest run out of house");
+        StartCoroutine(StartAnimationProcess2());
+        // }
     }
 
     public void StartEndSceneAfterConfrontation()
@@ -74,17 +77,12 @@ public class HouseAnimationManager : MonoBehaviour
 
     private IEnumerator StartAnimationProcess2() // run out of the house
     {
-        firstDestinationInteractable.clearActions();
-        firstDestinationInteractable.StartDialogue(DialogueType.ConfrontBadGuyRun);
-
-        yield return new WaitForSeconds(1);
-        Debug.Log("start animation");
+        Debug.Log("start StartAnimationProcess2");
         if (npcMovable != null & destinationOutOfHouse != null)
         {
-            Debug.Log("start run to");
             npcMovable.RunTo(destinationOutOfHouse);
         }
-        
+
         if (animatorTür2 != null)
         {
             animatorTür2.SetBool("enable", true);
