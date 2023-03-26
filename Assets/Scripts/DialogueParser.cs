@@ -140,6 +140,9 @@ public static class DialogueParser
             case DialogueType.City2BadGuyAfterRun:
                 dialogues.Add(new Dialogue("Ich", "Schon seeehr sus! Wenn er nichts zu verbergen hat, wieso läuft er dann weg? Ich sollte ihm folgen..."));
                 return dialogues;
+            case DialogueType.HouseIntro:
+                dialogues.Add(new Dialogue("Ich", "Soweit so gut. Ich sollte leise sein, sonst bemerkt er mich noch. Mal schauen, was ich hier so finde..."));
+                return dialogues;
             case DialogueType.HouseChoicesOne:
             {
                 dialogues.Add(new Dialogue("Guy", "Du schon wieder! Was zur Hölle tust du in meinem Haus?! " +
@@ -211,6 +214,7 @@ public enum DialogueType
     ReactorIntro,
     Powerhouse,
     City2BadGuy,
+    HouseIntro,
     HouseChoicesOne,
     FoundAxt,
     NotFoundAxt,
