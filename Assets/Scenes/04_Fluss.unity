@@ -14022,6 +14022,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5142532879768850087, guid: 5983c8a04c0e73047a6c860b9cd9aaad, type: 3}
   m_PrefabInstance: {fileID: 1969510258}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1982182023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1982182024}
+  - component: {fileID: 1982182025}
+  m_Layer: 0
+  m_Name: LakeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1982182024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982182023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.829962, y: -0.0006866455, z: 4.191594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1982182025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982182023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82503a018342534d8499d81fb0aff62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1992633453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14933,7 +14977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3185364304940955779, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4937686147630951802, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_Name
@@ -14947,6 +14991,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadingAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: panelBackground
+      value: 
+      objectReference: {fileID: 2143867533}
     - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: timeHours
       value: 0
@@ -15001,6 +15053,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+--- !u!114 &2143867533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2915569519776025376, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+  m_PrefabInstance: {fileID: 2143867532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &803019496632029159
 PrefabInstance:
   m_ObjectHideFlags: 0

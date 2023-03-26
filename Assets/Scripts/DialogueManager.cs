@@ -13,20 +13,19 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Text dialogueSubtext;
     [SerializeField] private Text dialogueSpeaker;
-    [Header("Choices UI")]
+    // [Header("Choices UI")]
     // [SerializeField] private GameObject choicesPanel;
-    [Header("Dialogue Settings")]
+    // [Header("Dialogue Settings")]
   //  [SerializeField] float typingDelay;
     [Header("Interact Press UI")]
     [SerializeField] private GameObject interactPanel;
-    
+    [Header("Player Object")]
+    [SerializeField] private AnimationAndMovementController playerController = null;
+
     public static DialogueManager Instance { get; private set; }
     
     private readonly KeyCode _continueKey = KeyCode.Return;
     private DialogueType _dialogueType;
-    // for ink use
-    // public TextAsset inkJson;
-    // private Story gameStory;
     private List<Dialogue> _dialogues;
     private bool _dialogueIsTyping;
     private bool _dialogueFinished;
@@ -49,7 +48,6 @@ public class DialogueManager : MonoBehaviour
     
     void Start()
     {
-        // gameStory = new Story(inkJson.text);
         canvas.gameObject.SetActive(true);
         _dialogueIsTyping = false;
         _dialogueIsActive = false;
@@ -97,7 +95,10 @@ public class DialogueManager : MonoBehaviour
     
     public void StartNewDialogue()
     {
-        Debug.Log("start new dialogue: "+ _dialogueType.ToString());
+        if (playerController != null)
+        {
+            playerController.ActivatePlayerMovement(false);
+        }
         canvas.gameObject.SetActive(true);
         _dialogueIsTyping = false;
         _dialogueIndex = 0;
@@ -106,14 +107,17 @@ public class DialogueManager : MonoBehaviour
         _dialogueFinished = false;
         dialoguePanel.SetActive(true);
         interactPanel.SetActive(false);
+
+        if (_dialogueType == DialogueType.ControlRoom)
+        {
+            GameStoryManager.Instance.visitedControlRoom = true;
+        } else if (_dialogueType == DialogueType.ReactorIntro)
+        {
+            GameStoryManager.Instance.visitedReactor = true;
+        }
         
         ContinueDialogue();
         _allowDialogInteraction = true;
-
-        // if (gameStory.canContinue)
-        // {
-        //     dialogueText.text = gameStory.Continue();
-        // }
     }
 
     public void ContinueDialogue()
@@ -145,7 +149,6 @@ public class DialogueManager : MonoBehaviour
         {
             CloseDialogue();
         }
-
     }
 
     private void CloseDialogue()
@@ -157,6 +160,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText.gameObject.SetActive(false);
         dialogueSubtext.gameObject.SetActive(false);
         dialoguePanel.SetActive(false);
+        if (playerController != null)
+        {
+            playerController.ActivatePlayerMovement(true);
+        }
     }
 
     private IEnumerator DisplayLine(string line)

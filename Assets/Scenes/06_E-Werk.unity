@@ -8290,10 +8290,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7233256248907276246, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1323607088}
     - target: {fileID: 7233256250281844866, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1323607088}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadingAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: panelBackground
+      value: 
+      objectReference: {fileID: 999994447}
     - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: timeHours
       value: 0
@@ -8352,6 +8364,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+--- !u!114 &999994447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2915569519776025376, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+  m_PrefabInstance: {fileID: 999994446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1008022077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9389,6 +9412,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4267077966516242, guid: ad77b71bebe086d48ab3d1cd35b2746b, type: 3}
   m_PrefabInstance: {fileID: 1129659806}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1135426520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1135426522}
+  - component: {fileID: 1135426521}
+  m_Layer: 0
+  m_Name: PowerPlantManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1135426521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135426520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba3fb6d8abfdf9448e69498714491ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1135426522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135426520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.829962, y: -0.0006866455, z: 4.191594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1150107100
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -948,6 +948,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: decec03a9de484948b79da6219847d52, type: 3}
+--- !u!114 &73664741 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2915569519776025376, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+  m_PrefabInstance: {fileID: 432107530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &75662818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3080,6 +3091,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bc304097d3da1e4fad947c87021bd6a, type: 3}
+--- !u!1 &414727300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414727302}
+  - component: {fileID: 414727301}
+  m_Layer: 0
+  m_Name: GameStoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &414727301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414727300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d1b4a648fea934594ccdcc7ec579e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 1
+  wasDead: 0
+  visitedCity1: 0
+  visitedReactor: 0
+--- !u!4 &414727302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414727300}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.829962, y: -0.0006866455, z: 4.191594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &419074817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3287,6 +3346,14 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7233256248907276246, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 747188696}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: panelBackground
+      value: 
+      objectReference: {fileID: 73664741}
     - target: {fileID: 8925048241716620980, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_RootOrder
       value: 15

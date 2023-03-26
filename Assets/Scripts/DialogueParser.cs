@@ -50,7 +50,7 @@ public static class DialogueParser
             {
                 List<ChoiceType> choices = new List<ChoiceType>
                 {
-                    ChoiceType.StayWarnPeople,
+                    ChoiceType.Chill,
                     ChoiceType.StayTalkBadGuy,
                     ChoiceType.InvestigateAKW
                 };
@@ -186,6 +186,13 @@ public static class DialogueParser
                                                   "äh... anrichten wirst! Du weißt nicht wie es ist, alleine auf dieser " +
                                                   "gottverdammten Welt zu sein! Ahhhhh... *tötet Typ mit Axt*"));
                 return dialogues;
+            case DialogueType.AgainStartAfterDied:
+                dialogues.Add(new Dialogue("Ich", "Jetzt bin ich schon wieder hier, das kann doch nicht wahr sein. " +
+                                                  "Dann geht alles wohl wieder von vorne los."));
+                return dialogues;
+            case DialogueType.AgainControlRoom:
+                dialogues.Add(new Dialogue("Ich", "Ich sollte den Monitor noch einmal prüfen."));
+                return dialogues;
         }
 
         return dialogues;
@@ -226,7 +233,9 @@ public enum DialogueType
     Zeitung,
     CityChoices2,
     ConfrontBadGuyRun,
-    City2BadGuyAfterRun
+    City2BadGuyAfterRun,
+    AgainStartAfterDied,
+    AgainControlRoom
 }
 
 public enum ChoiceType

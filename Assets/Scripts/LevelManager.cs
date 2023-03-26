@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private Image panelBackground;
     [SerializeField] private Slider progressBar;
-    [SerializeField] private Color fadeColor = Color.white;
+    [SerializeField] private Color fadeColor = Color.magenta;
     [SerializeField] private bool fadingAtStart = false;
     
     private bool panelIsOpaque = false;
@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     private UnityEngine.AsyncOperation _scene;
 
     private float colorFadeStep = 0.05f; // adjust these to change how many fade color steps will be made, low value = many steps, many steps = more time
-    private float colorFadeWaitTilNextStep = 0.0005f; // adjust the time between fade steps
+    private float colorFadeWaitTilNextStep = 0.00001f; // adjust the time between fade steps
 
     // private string _nextScene;
 

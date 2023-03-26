@@ -20,8 +20,8 @@ public class ChoicesManager : MonoBehaviour
     private List<ChoiceType> _choices;
     private List<GameObject> _indicators;
     private List<TextMeshProUGUI> _texts;
-    private KeyCode _upKey = KeyCode.LeftArrow;
-    private KeyCode _downKey = KeyCode.RightArrow;
+    private KeyCode _upKey = KeyCode.UpArrow;
+    private KeyCode _downKey = KeyCode.DownArrow;
     private KeyCode _enter = KeyCode.Return;
     private int _selectedChoiceIndex = 0;
     private bool _choicesActive;
@@ -202,6 +202,10 @@ public class ChoicesManager : MonoBehaviour
                 } else
                 {
                     Debug.Log("will load scene in ChoiceManager");
+                    if (nextScene == ChoiceParser.GetSceneForChoiceType(ChoiceType.BackToCity))
+                    {
+                        GameStoryManager.Instance.SetManagerValuesToAgainCity1();
+                    }
                     LevelManager.Instance.LoadScene(nextScene);
                 }
                 _choicesActive = false;
