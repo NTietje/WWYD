@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -12,9 +13,10 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private Image panelBackground;
-    [SerializeField] private Color fadeInColor = Color.white;
     [SerializeField] private Color fadeOutColor = Color.white;
+    [SerializeField] private Color fadeInColor = Color.white;
     [SerializeField] private bool fadingAtStart = false;
+    [SerializeField] private int fadingOutDelaySec = 0;
     
     private bool panelIsOpaque = false;
     private UnityEngine.AsyncOperation _scene;
@@ -99,6 +101,7 @@ public class LevelManager : MonoBehaviour
         panelBackground.color =  fadeOutColor.WithAlpha(1);
         loadingPanel.SetActive(true);
         Debug.Log("will start fade out");
+        yield return new WaitForSeconds(fadingOutDelaySec);
 
         for (float i = 1; i >= 0; i -= colorFadeStep) // Loop through alpha values from 1 to 0
         {

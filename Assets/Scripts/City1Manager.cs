@@ -22,6 +22,10 @@ public class City1Manager : MonoBehaviour
             GameStoryManager.Instance.wasDead = false;
             StartCoroutine(DisplayDialogue(DialogueType.AgainStartAfterDied));
         }
+        else
+        {
+            StartCoroutine(DisplayDialogue(DialogueType.CityChoicesDefault));
+        }
     }
     
     private IEnumerator DisplayDialogue(DialogueType type)

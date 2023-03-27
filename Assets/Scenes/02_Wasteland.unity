@@ -2994,15 +2994,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.845
+      value: -25.131998
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.124
+      value: 0.652
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.961
+      value: -14.117
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3091,55 +3091,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bc304097d3da1e4fad947c87021bd6a, type: 3}
---- !u!1 &414727300
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 414727302}
-  - component: {fileID: 414727301}
-  m_Layer: 0
-  m_Name: GameStoryManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &414727301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414727300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22d1b4a648fea934594ccdcc7ec579e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowReset: 1
-  wasDead: 0
-  visitedCity1: 0
-  visitedControlRoom: 0
-  visitedReactor: 0
---- !u!4 &414727302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414727300}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.829962, y: -0.0006866455, z: 4.191594}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &419074817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3339,6 +3290,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3185364304940955776, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4937686147630951802, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_Name
       value: CanvasAndManagers
@@ -3352,9 +3307,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 747188696}
     - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeInColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeInColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeInColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadingAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeOutColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeOutColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeOutColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: panelBackground
       value: 
       objectReference: {fileID: 73664741}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadingOutDelaySec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadingOutDelayMilliSec
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: timeHours
       value: 0
@@ -5213,15 +5204,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.923
+      value: -24.21
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.082
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.304
+      value: -13.46
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf61b15c9af9ae2419722c353dd3a284, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5290,7 +5281,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.018
+  m_Radius: 0.03
   m_Center: {x: 0.0000000036525756, y: 0.0000000025100761, z: 0.00076751376}
 --- !u!1001 &646299798
 PrefabInstance:
@@ -12173,7 +12164,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.012
+  m_Radius: 0.03
   m_Center: {x: 1.9311109e-12, y: -0.00013270492, z: 0}
 --- !u!114 &1306173103
 MonoBehaviour:
@@ -13191,7 +13182,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1471923963
 PrefabInstance:
@@ -14524,7 +14515,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.012
+  m_Radius: 0.03
   m_Center: {x: -0.000005436712, y: -0.00067925354, z: 0.00017948776}
 --- !u!1001 &1643483057
 PrefabInstance:

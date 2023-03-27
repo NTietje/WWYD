@@ -9,7 +9,8 @@ public class GameUiManager : MonoBehaviour
     [SerializeField] private GameObject introPanel;
     [SerializeField] private GameObject videoLayer;
     [SerializeField] private VideoPlayer videoPlayer;
-    
+    [SerializeField] private GameObject loadingPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +40,6 @@ public class GameUiManager : MonoBehaviour
         introPanel.SetActive(false);
         yield return new WaitForSeconds(43);
         LevelManager.Instance.LoadScene("02_Wasteland");
-        videoLayer.SetActive(false);
     }
     
     public void HideIntroPanel()

@@ -52,7 +52,8 @@ public class ClockCounter : MonoBehaviour
             Debug.Log("set clock to small seconds value");
             timeHours = 0;
             timeMinutes = 0;
-            timeSeconds = 8;
+            timeSeconds = 10;
+            time = IntsToTime(new[] {timeHours, timeMinutes, timeSeconds});
             GameStoryManager.Instance.SetClockTime(timeHours, timeMinutes, timeSeconds);
             text = string.Format("{0:00}:{1:00}:{2:00}", timeHours, timeMinutes, timeSeconds);
             clockText.text = text;

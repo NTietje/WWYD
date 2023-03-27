@@ -3379,7 +3379,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.972549, g: 0.8745098, b: 0.60784316, a: 1}
   m_Intensity: 1
-  m_Range: 3
+  m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -6056,7 +6056,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.9716981, g: 0.8755798, b: 0.60960305, a: 1}
   m_Intensity: 1
-  m_Range: 3
+  m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -7950,7 +7950,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.972549, g: 0.8745098, b: 0.60784316, a: 1}
+  m_Color: {r: 0.6933962, g: 0.84252983, b: 1, a: 1}
   m_Intensity: 1.4
   m_Range: 15
   m_SpotAngle: 30
@@ -8748,7 +8748,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.972549, g: 0.8745098, b: 0.60784316, a: 1}
+  m_Color: {r: 0.5707547, g: 0.8050719, b: 1, a: 1}
   m_Intensity: 1.2
   m_Range: 11
   m_SpotAngle: 30
@@ -8873,6 +8873,18 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 980148327}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeInColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeInColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeInColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: fadingAtStart
       value: 1
@@ -9175,6 +9187,9 @@ MonoBehaviour:
   delay: 0
   dialogueType: 20
   sceneCall: {fileID: 0}
+  actionsAfterDialogue:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1791829314
 GameObject:
   m_ObjectHideFlags: 0

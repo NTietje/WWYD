@@ -57,7 +57,17 @@ public static class DialogueParser
                 dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
                 return dialogues;
             }
-
+            case DialogueType.CityChoicesDefault:
+            {
+                List<ChoiceType> choices = new List<ChoiceType>
+                {
+                    ChoiceType.StayWarnPeople,
+                    ChoiceType.Chill,
+                    ChoiceType.InvestigateAKW
+                };
+                dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
+                return dialogues;
+            }
             case DialogueType.CityChoices:
             {
                 dialogues.Add(new Dialogue("Ich",
@@ -244,7 +254,8 @@ public enum DialogueType
     ConfrontBadGuyRun,
     City2BadGuyAfterRun,
     AgainStartAfterDied,
-    AgainControlRoom
+    AgainControlRoom,
+    CityChoicesDefault
 }
 
 public enum ChoiceType
