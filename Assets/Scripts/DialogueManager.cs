@@ -108,14 +108,6 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
         interactPanel.SetActive(false);
 
-        if (_dialogueType == DialogueType.ControlRoom)
-        {
-            GameStoryManager.Instance.visitedControlRoom = true;
-        } else if (_dialogueType == DialogueType.ReactorIntro)
-        {
-            GameStoryManager.Instance.visitedReactor = true;
-        }
-        
         ContinueDialogue();
         _allowDialogInteraction = true;
     }

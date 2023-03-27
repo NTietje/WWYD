@@ -8,4 +8,11 @@ public class ReactorManager : MonoBehaviour
     {
         GameStoryManager.Instance.allowReset = false;
     }
+
+    public void SetToDeadAndVisited()
+    {
+        GameStoryManager.Instance.visitedReactor = true;
+        GameStoryManager.Instance.wasDead = true;
+    }
+    
 }

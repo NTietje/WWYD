@@ -2,12 +2,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AutoStartDialogue : MonoBehaviour
 {
     [SerializeField] private int delay;
     [SerializeField] private DialogueType dialogueType;
     [SerializeField] private SceneCall sceneCall = null;
+    [SerializeField] private UnityEvent actionsAfterDialogue = null;
 
     private bool dialogueCalled = false;
 
@@ -36,6 +38,7 @@ public class AutoStartDialogue : MonoBehaviour
         {
             dialogueCalled = false;
             Debug.Log("AutoDialogue will start animation and new scene");
+            actionsAfterDialogue?.Invoke();
             sceneCall.StartAnimatorAndScene();
         }
     }

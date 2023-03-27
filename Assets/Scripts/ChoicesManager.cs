@@ -202,7 +202,7 @@ public class ChoicesManager : MonoBehaviour
                 } else
                 {
                     Debug.Log("will load scene in ChoiceManager");
-                    if (nextScene == ChoiceParser.GetSceneForChoiceType(ChoiceType.BackToCity))
+                    if (currentChoiceType == ChoiceType.BackToCity)
                     {
                         GameStoryManager.Instance.SetManagerValuesToAgainCity1();
                     }

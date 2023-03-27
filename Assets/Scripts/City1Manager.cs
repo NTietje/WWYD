@@ -16,8 +16,10 @@ public class City1Manager : MonoBehaviour
         if (!GameStoryManager.Instance.visitedCity1)
         {
             StartCoroutine(DisplayDialogue(DialogueType.CityIntro));
-        } else if (GameStoryManager.Instance.wasDead)
+            GameStoryManager.Instance.visitedCity1 = true;
+        } else if (GameStoryManager.Instance.wasDead & GameStoryManager.Instance.visitedCity1)
         {
+            GameStoryManager.Instance.wasDead = false;
             StartCoroutine(DisplayDialogue(DialogueType.AgainStartAfterDied));
         }
     }

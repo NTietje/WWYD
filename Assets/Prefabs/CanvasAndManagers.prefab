@@ -41,9 +41,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 8925048241716620980}
     m_Modifications:
     - target: {fileID: 2613589588483515830, guid: 25aaed683836524458e81bf14c26126d, type: 3}
+      propertyPath: fadeColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613589588483515830, guid: 25aaed683836524458e81bf14c26126d, type: 3}
+      propertyPath: fadeColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613589588483515830, guid: 25aaed683836524458e81bf14c26126d, type: 3}
+      propertyPath: fadeColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613589588483515830, guid: 25aaed683836524458e81bf14c26126d, type: 3}
       propertyPath: progressBar
       value: 
-      objectReference: {fileID: 5991390198230656465}
+      objectReference: {fileID: 0}
     - target: {fileID: 2613589588483515830, guid: 25aaed683836524458e81bf14c26126d, type: 3}
       propertyPath: loadingPanel
       value: 
@@ -557,17 +569,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5991390198230656465 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 776334949167932640, guid: 289cf461011dfbd4ca4f7b7989269469, type: 3}
-  m_PrefabInstance: {fileID: 6477206651973370161}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5999228680923513518 stripped

@@ -8270,13 +8270,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2515399569362027345, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3040584909860822304, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3185364304940955779, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4937686147630951802, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_Name
@@ -8285,6 +8289,10 @@ PrefabInstance:
     - target: {fileID: 5268726080076012678, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798869979422532356, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80.83057
       objectReference: {fileID: 0}
     - target: {fileID: 5999228680923513518, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_IsActive
@@ -8312,7 +8320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: timeMinutes
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689415184402915033, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: timeSeconds
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8888890072822207374, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: m_IsActive
@@ -9441,6 +9453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba3fb6d8abfdf9448e69498714491ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneCall: {fileID: 1081188748}
 --- !u!4 &1135426522
 Transform:
   m_ObjectHideFlags: 0
@@ -15507,9 +15520,9 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1081188748}
-        m_TargetAssemblyTypeName: SceneCall, Assembly-CSharp
-        m_MethodName: StartAnimatorAndScene
+      - m_Target: {fileID: 1135426521}
+        m_TargetAssemblyTypeName: PowerPlantManager, Assembly-CSharp
+        m_MethodName: StartExplosion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

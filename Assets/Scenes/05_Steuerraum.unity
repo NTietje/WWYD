@@ -2020,6 +2020,34 @@ PrefabInstance:
       propertyPath: dialogueType
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1375256317}
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVisited
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ControlRoomManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092959480080780130, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2092959480080780133, guid: 34e034ae7ca70804aab20ca0b1f676ac, type: 3}
       propertyPath: m_Name
       value: Interactable

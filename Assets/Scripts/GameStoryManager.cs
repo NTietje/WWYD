@@ -31,9 +31,21 @@ public class GameStoryManager : MonoBehaviour
 
     public void SubtractFromClockTime(int hours, int minutes, int seconds)
     {
-        timeTillBang[0] -= hours;
-        timeTillBang[1] -= minutes;
-        timeTillBang[2] -= seconds;
+        Debug.Log("given left time array: " + " " + timeTillBang[0] + " " + timeTillBang[1] + " " + timeTillBang[2]);
+        float timeLeft = ClockCounter.IntsToTime(timeTillBang);
+        Debug.Log("given left time: " + timeLeft);
+        Debug.Log("given left time as array again: " + ClockCounter.TimeToIntArray(timeLeft).ToString());
+        Debug.Log("given subtract time array: " + " " + hours + " " + minutes + " " + seconds);
+        float substractTime = ClockCounter.IntsToTime(new[] { hours, minutes, seconds });
+        Debug.Log("given subtract time: " + substractTime);
+        Debug.Log("given subtract time array: " + ClockCounter.TimeToIntArray(substractTime).ToString());
+
+        timeLeft -= substractTime;
+        Debug.Log("time after subtracting: " + timeLeft);
+
+        int[] timeArray = ClockCounter.TimeToIntArray(timeLeft);
+        Debug.Log("time array after subtracting: " + " " + timeArray[0] + " " + timeArray[1] + " " + timeArray[2]);
+        timeTillBang = timeArray;
     }
     
     public void SetClockTime(int hours, int minutes, int seconds)
@@ -66,8 +78,27 @@ public class GameStoryManager : MonoBehaviour
 
     public void SoftResetToCity1Values() // player died in level and was reset to city 1
     {
+        Debug.Log("soft reset to city 1 values");
+        
         wasDead = true;
-        visitedCity1 = false;
+        visitedCity1 = true;
+        
+        peopleTalkedCount = 0;
+        spokenPeopleIDs = new List<string>();
+        
+        playerHasAxe = false;
+        newspaperFound = false;
+        powerPlanFound = false;
+        
+        timeTillBang = startTime;
+    }
+    
+    public void SoftResetToCity2Values() // player died in level and was reset to city 2
+    {
+        Debug.Log("soft reset to city 2 values");
+
+        wasDead = true;
+        visitedCity1 = true;
         
         peopleTalkedCount = 0;
         spokenPeopleIDs = new List<string>();
@@ -81,6 +112,8 @@ public class GameStoryManager : MonoBehaviour
     
     public void SetManagerValuesToAgainCity1() // back from control room
     {
+        Debug.Log("reset to again city 1 values");
+
         visitedCity1 = true;
         
         peopleTalkedCount = 0;
@@ -91,12 +124,15 @@ public class GameStoryManager : MonoBehaviour
         powerPlanFound = false;
     }
     
-    public void HardResetValues()
+    public void HardResetValues() // restart the game
     {
+        Debug.Log("hard reset all values");
+
         wasDead = false;
         
         visitedCity1 = false;
         visitedReactor = false;
+        visitedControlRoom = false;
         
         peopleTalkedCount = 0;
         spokenPeopleIDs = new List<string>();

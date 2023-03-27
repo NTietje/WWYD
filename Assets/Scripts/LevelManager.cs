@@ -12,24 +12,14 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private Image panelBackground;
-    [SerializeField] private Slider progressBar;
-    [SerializeField] private Color fadeColor = Color.magenta;
+    [SerializeField] private Color fadeInColor = Color.white;
+    [SerializeField] private Color fadeOutColor = Color.white;
     [SerializeField] private bool fadingAtStart = false;
     
     private bool panelIsOpaque = false;
-    private bool _loadProgressActive = false;
-    private float _target;
     private UnityEngine.AsyncOperation _scene;
-
     private float colorFadeStep = 0.05f; // adjust these to change how many fade color steps will be made, low value = many steps, many steps = more time
     private float colorFadeWaitTilNextStep = 0.00001f; // adjust the time between fade steps
-
-    // private string _nextScene;
-
-    // public void setNextScene(string scene)
-    // {
-    //     _nextScene = scene;
-    // }
 
     private void Awake()
     {
@@ -56,31 +46,48 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public async void LoadScene(string sceneName, int delayMilliSec = 1000)
+    public async void LoadScene(string sceneName, int delayMilliSec = 500)
     {
         if (sceneName != null & sceneName != "")
         {
             Debug.Log("in LoadScene");
             await Task.Delay(delayMilliSec);
-            
-            // _loadProgressActive = true;
-            // progressBar.value = 0;
-            _target = 0;
+            checkSettingResetForScene(sceneName);
             _scene = SceneManager.LoadSceneAsync(sceneName);
             _scene.allowSceneActivation = false;
             StartCoroutine(FadeInPanel());
         }
     }
 
+    private void checkSettingResetForScene(string newScene)
+    {
+        if (GameStoryManager.Instance.wasDead)
+        {
+            Debug.Log("was dead!");
+            if (newScene == ChoiceParser.GetSceneForChoiceType(ChoiceType.BackToCity)) // go to city 1
+            {
+                GameStoryManager.Instance.SoftResetToCity1Values();
+            } else if (newScene == ChoiceParser.GetSceneForChoiceType(ChoiceType.PeopleAfterEStation)) // go to city 2
+            {
+                GameStoryManager.Instance.SoftResetToCity2Values();
+            }
+        }
+        else
+        {
+            Debug.Log("was NOT dead!");
+        }
+
+    }
+
     private IEnumerator FadeInPanel()
     {
-        panelBackground.color =  fadeColor.WithAlpha(0);
+        panelBackground.color =  fadeInColor.WithAlpha(0);
         loadingPanel.SetActive(true);
         Debug.Log("will start fade in");
 
         for (float i = 0; i <= 1; i += colorFadeStep) // Loop through alpha values from 0 to 1
         {
-            Color fadedColor = fadeColor.WithAlpha(i); // Create a new color with the current alpha
+            Color fadedColor = fadeInColor.WithAlpha(i); // Create a new color with the current alpha
             panelBackground.color = fadedColor;
             yield return new WaitForSeconds(colorFadeWaitTilNextStep);
         }
@@ -89,13 +96,13 @@ public class LevelManager : MonoBehaviour
     
     public IEnumerator FadeOutPanel()
     {
-        panelBackground.color =  fadeColor.WithAlpha(1);
+        panelBackground.color =  fadeOutColor.WithAlpha(1);
         loadingPanel.SetActive(true);
         Debug.Log("will start fade out");
 
         for (float i = 1; i >= 0; i -= colorFadeStep) // Loop through alpha values from 1 to 0
         {
-            Color fadedColor = fadeColor.WithAlpha(i); // Create a new color with the current alpha
+            Color fadedColor = fadeOutColor.WithAlpha(i); // Create a new color with the current alpha
             panelBackground.color = fadedColor;
             yield return new WaitForSeconds(colorFadeWaitTilNextStep);
         }
@@ -110,14 +117,6 @@ public class LevelManager : MonoBehaviour
             scene.allowSceneActivation = true;
         }
     }
-
-    // private void Update()
-    // {
-    //     if (_loadProgressActive)
-    //     {
-    //         progressBar.value = Mathf.MoveTowards(progressBar.value, _target, 3 * Time.deltaTime); 
-    //     }
-    // }
 }
 
 public static class ColorExtensions

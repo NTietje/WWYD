@@ -8,4 +8,9 @@ public class LakeManager : MonoBehaviour
     {
         GameStoryManager.Instance.allowReset = false;
     }
+    
+    public void SetToDead()
+    {
+        GameStoryManager.Instance.wasDead = true;
+    }
 }

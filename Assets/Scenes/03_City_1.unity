@@ -21969,6 +21969,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1851784845}
     - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeColor.b
+      value: 0.5714467
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeColor.g
+      value: 0.1745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
+      propertyPath: fadeColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233256250399496102, guid: c61b7c9e50159494699a662321cc40ee, type: 3}
       propertyPath: fadingAtStart
       value: 1
       objectReference: {fileID: 0}

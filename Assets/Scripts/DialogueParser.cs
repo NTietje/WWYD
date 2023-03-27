@@ -187,9 +187,18 @@ public static class DialogueParser
                                                   "gottverdammten Welt zu sein! Ahhhhh... *tötet Typ mit Axt*"));
                 return dialogues;
             case DialogueType.AgainStartAfterDied:
-                dialogues.Add(new Dialogue("Ich", "Jetzt bin ich schon wieder hier, das kann doch nicht wahr sein. " +
-                                                  "Dann geht alles wohl wieder von vorne los."));
-                return dialogues;
+                {
+                    dialogues.Add(new Dialogue("Ich", "Jetzt bin ich schon wieder hier, dass kann doch nicht wahr sein. " +
+                                                      "Dann geht alles wohl wieder von vorne los."));
+                    List<ChoiceType> choices = new List<ChoiceType>
+                    {
+                        ChoiceType.StayWarnPeople,
+                        ChoiceType.Chill,
+                        ChoiceType.InvestigateAKW
+                    };
+                    dialogues.Add(new Dialogue("Ich", "Was soll ich tun?", choices: choices));
+                    return dialogues;
+                }
             case DialogueType.AgainControlRoom:
                 dialogues.Add(new Dialogue("Ich", "Ich sollte den Monitor noch einmal prüfen."));
                 return dialogues;
@@ -272,7 +281,7 @@ public static class ChoiceParser
             case ChoiceType.InvestigateAKW:
                 return "Zum AKW gehen";
             case ChoiceType.LookAround:
-                return "Umsehen";
+                return "Tür mit Schild 'Betreten verboten' öffnen";
             case ChoiceType.EWerk:
                 return "Zum E-Werk gehen";
             case ChoiceType.EndKillBadGuy:
@@ -296,10 +305,10 @@ public static class ChoiceParser
                 return "NONE";
             case ChoiceType.People:
                 return "03_City_1";
-                case ChoiceType.BackToCity:
+            case ChoiceType.BackToCity:
                 return "03_City_1";
             case ChoiceType.PeopleAfterEStation:
-                return "03_City_3";
+                return "03_City_2";
             case ChoiceType.Chill:
                 return "04_Fluss";
             case ChoiceType.InvestigateAKW:

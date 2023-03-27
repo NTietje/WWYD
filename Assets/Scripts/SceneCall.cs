@@ -33,7 +33,7 @@ public class SceneCall : MonoBehaviour
         {
             animator2.SetBool("enable", true);
         }
-        
+
         if (sceneName != null)
         {
             Debug.Log("waiting");

@@ -27,4 +27,10 @@ public class ControlRoomManager : MonoBehaviour
         DialogueManager.Instance.setDialogueType(type);
         DialogueManager.Instance.StartNewDialogue();
     }
+
+    public void SetVisited()
+    {
+        GameStoryManager.Instance.visitedControlRoom = true;
+    }
+
 }
