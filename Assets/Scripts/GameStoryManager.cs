@@ -15,7 +15,7 @@ public class GameStoryManager : MonoBehaviour
     public bool visitedControlRoom = false;
     public bool visitedReactor = false;
 
-    // people talked to in city
+    // people talked to in city 1
     private int peopleTalkedCount = 0;
     private List<string> spokenPeopleIDs;
     
@@ -31,20 +31,10 @@ public class GameStoryManager : MonoBehaviour
 
     public void SubtractFromClockTime(int hours, int minutes, int seconds)
     {
-        Debug.Log("given left time array: " + " " + timeTillBang[0] + " " + timeTillBang[1] + " " + timeTillBang[2]);
         float timeLeft = ClockCounter.IntsToTime(timeTillBang);
-        Debug.Log("given left time: " + timeLeft);
-        Debug.Log("given left time as array again: " + ClockCounter.TimeToIntArray(timeLeft).ToString());
-        Debug.Log("given subtract time array: " + " " + hours + " " + minutes + " " + seconds);
         float substractTime = ClockCounter.IntsToTime(new[] { hours, minutes, seconds });
-        Debug.Log("given subtract time: " + substractTime);
-        Debug.Log("given subtract time array: " + ClockCounter.TimeToIntArray(substractTime).ToString());
-
         timeLeft -= substractTime;
-        Debug.Log("time after subtracting: " + timeLeft);
-
         int[] timeArray = ClockCounter.TimeToIntArray(timeLeft);
-        Debug.Log("time array after subtracting: " + " " + timeArray[0] + " " + timeArray[1] + " " + timeArray[2]);
         timeTillBang = timeArray;
     }
     

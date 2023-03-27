@@ -22,11 +22,7 @@ public class CityAnimationManager : MonoBehaviour
     
     public void RunForestRun()
     {
-        // Debug.Log("run forest run");
-        // if (choicesManager.GetCurrentChoiceType() == ChoiceType.ConfrontBadGuy)
-        // {
-            StartCoroutine(StartAnimationProcess());
-        // }
+        StartCoroutine(StartAnimationProcess());
     }
     
     private IEnumerator StartAnimationProcess() // run out of the house

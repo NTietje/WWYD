@@ -66,12 +66,7 @@ public class NpcMovable : MonoBehaviour
         setAnimationBool(runningAnimationBool);
         enableMove = true;
     }
-    
-    public void SetToStand()
-    {
-        setAnimationBool(standingAnimationBool);
-    }
-    
+
     public void SetToIdle()
     {
         npcAnimator.SetBool(walkingAnimationBool, false);

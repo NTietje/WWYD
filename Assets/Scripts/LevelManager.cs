@@ -81,7 +81,7 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    private IEnumerator FadeInPanel()
+    private IEnumerator FadeInPanel() // fade at end of scene
     {
         panelBackground.color =  fadeInColor.WithAlpha(0);
         loadingPanel.SetActive(true);
@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
         _scene.allowSceneActivation = true;
     }
     
-    public IEnumerator FadeOutPanel()
+    public IEnumerator FadeOutPanel() // fade at start of scene
     {
         panelBackground.color =  fadeOutColor.WithAlpha(1);
         loadingPanel.SetActive(true);
