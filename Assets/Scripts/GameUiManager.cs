@@ -34,11 +34,12 @@ public class GameUiManager : MonoBehaviour
     {
         introPanel.SetActive(true);
         gameMenu.SetActive(false);
-        yield return new WaitForSeconds(35);
-        videoPlayer.Play();
-        yield return new WaitForSeconds(5);
-        introPanel.SetActive(false);
-        yield return new WaitForSeconds(43);
+        // yield return new WaitForSeconds(35); // comment in later
+        // videoPlayer.Play();
+        // yield return new WaitForSeconds(5);
+        // introPanel.SetActive(false);
+        // yield return new WaitForSeconds(43);
+        yield return new WaitForSeconds(0); // delete later
         LevelManager.Instance.LoadScene("02_Wasteland");
     }
     
